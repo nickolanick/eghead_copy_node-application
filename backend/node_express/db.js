@@ -1,5 +1,5 @@
-// const uri = "mongodb://mongo:27017/docker-node-mongo";
-const uri = "mongodb://localhost:27017/new_db;";
+const uri = "mongodb://mongo:27017/docker-node-mongo-v2";
+// const uri = "mongodb://localhost:27017/new_db;";
 const mongoose = require("mongoose")
 mongoose.connect(uri);
 
