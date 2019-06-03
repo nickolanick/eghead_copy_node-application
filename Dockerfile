@@ -11,4 +11,7 @@ COPY . .
 
 EXPOSE 8080
 
+
+CMD [ "npm", "build" ]
+CMD [ "npm", "populate" ]
 CMD [ "npm", "start" ]

@@ -1,7 +1,7 @@
 export const fetch_and_add = (app, endpoint, component) => {
     const tmp = document.createElement("div");
     tmp.innerHTML = `
-    <h1>::))</h1>
+    <!--<h1>::))</h1>-->
     `
     app.appendChild(tmp);
 

@@ -67,7 +67,7 @@ const login_component = (data) => {
             <br>
                <div class="log-in__input-block log-in__input-block-info">
                 Need to create an
-                account? <a href="#">Sign up</a>
+                account? <a href="/registration">Sign up</a>
             </div>
             <div class="log-in__input-block log-in__input-block-info">
                 Forgot your

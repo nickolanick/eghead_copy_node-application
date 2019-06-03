@@ -13,7 +13,11 @@ $main-grey: #141618;
 
 .nav-bar {
   background-color: $main-dark;
-
+&__login-link{
+  text-decoration: none;
+  color: #fff;
+  padding-left: 10px;
+}
   &__feadback-button{
     background-color: transparent;
     color: #fff;

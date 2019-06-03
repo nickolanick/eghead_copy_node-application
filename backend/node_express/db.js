@@ -40,6 +40,24 @@ let lessonSchema = mongoose.Schema({
 
 
 exports.Lesson = mongoose.model("Lesson", lessonSchema);
+
+
+//
+// let fileSingleSchema = mongoose.Schema({
+//     name: {type: String, required: true},
+//     content:{type:id,required:true}
+// });
+//
+//
+// exports.FileSingle = mongoose.model("FileSingle", fileSingleSchema);
+//
+
+
+
+
+
+
+
 // exports.Course.find({},(err,users)=>{
 //     users.map(course=>{
 //         console.log(course.toString())

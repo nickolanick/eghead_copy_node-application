@@ -1,5 +1,6 @@
 import {clock, green_flag, mark} from "./icons/icons";
 import bem from "../../helpers/bem";
+
 const b = bem("course-list-cart")
 const CourseListsCart = (data) => {
     const course_list_cart = document.createElement("div");
@@ -27,8 +28,8 @@ const CourseListsCart = (data) => {
 
 
 <div class="${b("time_script")}">
-    <div class="${b("icon-text-share")}">${clock} 1:17</div>
-    <div class="${b("icon-text-share")}">${mark} javascript</div>
+    <div class="${b("icon-text-share")}">${clock} ${data.time}</div>
+    <div class="${b("icon-text-share")}">${mark} ${data.language}</div>
 </div>
     
     </div>

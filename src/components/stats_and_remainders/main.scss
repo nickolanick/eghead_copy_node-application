@@ -8,7 +8,11 @@ $main-grey: #141618;
 .stats_and_remainders {
   background-color: $main-dark;
   padding: 50px 0;
+  &__header{
+
+  }
   &__wrapper {
+    margin-top:  10px;
     padding-left: $main-padding;
     padding-right: $main-padding;
     color: #fff;
@@ -21,6 +25,7 @@ $main-grey: #141618;
   width: 450px;
   &__single-stat {
     padding-top: 20px;
+    height: 90px ;
     padding-bottom: 20px;
     flex: 1;
     background-color: #21252d;
@@ -29,12 +34,24 @@ $main-grey: #141618;
     flex-direction: column;
     align-items: center;
   }
+  &__space{
+    margin-right: 10px;
+  }
+  &__block-header{
+    color: hsla(0,0%,100%,.6);
+    font-size: .75rem;
+  }
+  &__count{
+    font-size: 2.25rem;
+  }
   &__rect-stat {
+    font-size: .75rem;
     width: 100%;
+    color: #fff;
     border: none;
     background-color: #21252d;
     padding: 10px 5px;
-    margin-top: 5px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
   }

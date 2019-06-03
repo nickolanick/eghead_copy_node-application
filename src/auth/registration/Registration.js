@@ -76,7 +76,7 @@ const registration = (data) => {
             </div>
             <br>
             <div class="log-in__input-block log-in__input-block-info">
-                Have an account <a href="#">Sign in</a>
+                Have an account <a href="/login">Sign in</a>
             </div>
             <div class="log-in__input-block log-in__input-block-info">
                 Forgot your

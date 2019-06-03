@@ -92,7 +92,7 @@ id="Shape"></path>
     <button class="${b("profile")}">
     Mykhailo
     <img class="${b("profile-avatar")}" src="src/images/headhock.png" alt="">
-    </button>` : `<a href="/login">login</a>`}
+    </button>` : `<a  class="${b("login-link")}" href="/login">login</a>`}
         
     </div>
     </div>

@@ -8,29 +8,28 @@ const StatsAndRemainders = data => {
     console.log(data,"STATTs")
     const stats_and_remainders = document.createElement("section");
     stats_and_remainders.innerHTML = `
-        <div class="${b("wrapper )")} flex-join website-layout-width website-layout-position">
+        <div class="${b("wrapper")} flex-join website-layout-width website-layout-position">
             <div class="course-big-block">
-                <h2 class="${b("header)")} ">CONTINUE WATCHING</h2>
-                
+                <span class="${b("header")} ">CONTINUE WATCHING</span>
             </div>
             <div class="stats-block">
-                <h2 class="${b("header)")} ">STATS</h2>
+                <span class="${b("header")} ">STATS</span>
                 
                 <div class="stats-block-wrapper">
 
                     <div class="flex-join">
-                        <div class="stats-block__single-stat">
+                        <div class="stats-block__single-stat stats-block__space">
 
-                            <h3>880</h3>
+                            <span class="stats-block__count">0</span>
 
-                            <h4>Lessong completed</h4>
+                            <span class="stats-block__block-header">Lessong completed</span>
 
                         </div>
                         <div class="stats-block__single-stat">
 
-                            <h3>880</h3>
+                            <span class="stats-block__count">0</span>
 
-                            <h4>Courses completed</h4>
+                            <span class="stats-block__block-header">Courses completed</h4>
 
                         </div>
 

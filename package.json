@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --watch",
-    "start": "webpack;node ./backend/node_express/server.js"
+    "populate": "node ./backend/node_express/populate.js",
+    "build": "webpack",
+    "start": "node ./backend/node_express/server.js"
   },
   "keywords": [],
   "author": "",
