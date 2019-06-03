@@ -34,6 +34,7 @@ let lessonSchema = mongoose.Schema({
     name: {type: String, required: true},
     time: {type: String, required: true},
     video: {type: String, required: true},
+    description: {type: String},
     author: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 
