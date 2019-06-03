@@ -1,8 +1,11 @@
 import bem from "../../helpers/bem";
 import {search_icon} from "./icons";
+import {get_cookie, get_token} from "../../helpers/cookies";
 
 const b = bem("nav-bar");
 const nav_bar = (data) => {
+    const is_logged = get_token();
+
     const nav_bar = document.createElement("nav");
     nav_bar.className = `${b()}`;
 
@@ -80,6 +83,8 @@ id="Shape"></path>
         
         <button class="${b("form-button")}" type="submit">${search_icon}</button>
     </form>
+    ${is_logged ?
+        `
         <button class="${b("feadback-button")}">
             Feedback
         </button>
@@ -87,7 +92,8 @@ id="Shape"></path>
     <button class="${b("profile")}">
     Mykhailo
     <img class="${b("profile-avatar")}" src="src/images/headhock.png" alt="">
-    </button>
+    </button>` : `<a href="/login">login</a>`}
+        
     </div>
     </div>
     </div>

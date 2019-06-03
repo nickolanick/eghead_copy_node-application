@@ -8,6 +8,7 @@ const jwt = require("jsonwebtoken")
 const User = require("../db").User;
 //     next();
 main_router.post('/registration', (req, res) => {
+    console.log(req);
     const user = req.body;
     console.log(user);
     User.insertMany(
@@ -22,20 +23,25 @@ main_router.post('/registration', (req, res) => {
 
 main_router.post('/login', (req, res) => {
     const user = req.body;
+
     let password = user.password;
     let email = user.email;
-    User.find({password: password, email: email}, function (err, user) {
-        if (err) {
+    User.find({password: password, email: email}, (err, user) => {
+        if (!user.length || err) {
             res.send(err);
+            console.log("ERROR")
+        }else {
+            console.log(user, "user")
+            console.log(user.length, "LOGIN")
+            const token = jwt.sign({
+                username: user.name,
+
+            }, key, {expiresIn: "3 hours"});
+
+            res
+                .status(200)
+                .send({"access_token": token})
         }
-        const token = jwt.sign({
-            username: user.name,
-
-        }, key , {expiresIn: "3 hours"});
-
-        res
-            .status(200)
-            .send({"access_token": token})
 
     })
 });

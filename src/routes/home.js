@@ -6,7 +6,10 @@ import CourseListsCart from "../components/course_list_cart/";
 import CartListCombination from "../components/cart_lists_combination/";
 
 export const home_route = (app) => {
+
     const view = [
+
+
         {"endpoint": "src/components/stats_and_remainders/data.json", "component": NavBar},
         {"endpoint": "src/components/stats_and_remainders/data.json", "component": StatsAndRemainders},
         {"endpoint": "/api/new_content", "component": Publishments},
