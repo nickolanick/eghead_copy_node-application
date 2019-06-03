@@ -2,7 +2,7 @@ const key = require('../key').key;
 // const key = "super secure"
 const express = require("express");
 const main_router = express.Router();
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 
 
 const User = require("../db").User;

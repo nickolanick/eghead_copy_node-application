@@ -1,5 +1,5 @@
 // const uri = "mongodb://mongo:27017/docker-node-mongo";
-const uri = "mongodb://localhost:27017/posts";
+const uri = "mongodb://localhost:27017/new_db;";
 const mongoose = require("mongoose")
 mongoose.connect(uri);
 
@@ -22,13 +22,23 @@ exports.User = mongoose.model("user", userSchema);
 let courseSchema = mongoose.Schema({
     courseName: {type: String, required: true},
     courseTech: {type: String, required: true,},
-    courseAuthor: {type: Number, required: true},
     courseDescription: String,
+    lessons: [{type: mongoose.Schema.Types.ObjectId, ref: 'Lesson'}],
     author: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 
 
 exports.Course = mongoose.model("Course", courseSchema);
+
+let lessonSchema = mongoose.Schema({
+    name: {type: String, required: true},
+    time: {type: String, required: true},
+    video: {type: String, required: true},
+    author: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
+});
+
+
+exports.Lesson = mongoose.model("Lesson", lessonSchema);
 // exports.Course.find({},(err,users)=>{
 //     users.map(course=>{
 //         console.log(course.toString())
