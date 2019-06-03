@@ -1,13 +1,14 @@
 import bem from "../../helpers/bem";
 
 const b = bem("course_cart")
-export const CourseCart = data => {
+export const CourseCart = (data,display_list=false) => {
+
     const result = document.createElement("div")
 
+    console.log(data,"DAA")
+    result.className = b() + (display_list ? ` ${b(["space_between_inline"])}` : "");
 
-    result.className = b() + (data.space_between_inline ? ` ${b(["space_between_inline"])}` : "");
-
-    result.style.width = data.width ? data.width : "100%";
+    result.style.width = display_list ? "33%": "100%";
     result.innerHTML = `
 
         <div class="${b("shadow")}">
@@ -19,11 +20,11 @@ export const CourseCart = data => {
                             </div>
 
                             <div class="dotted-header">
-                                <span>COURSE </span><span class="dotted-header__dot">•</span><span> REACT</span>
+                                <span>COURSE </span><span class="dotted-header__dot">•</span><span>${data.courseTech}</span>
                             </div>
 
                             <div class="${b("header-wrapper")}">
-                                <h3 class="${b("header")}">Test React With Enzum and JEST</h3>
+                                <h3 class="${b("header")}">${data.courseName}</h3>
                             </div>
 
                         </div>

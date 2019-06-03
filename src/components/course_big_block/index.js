@@ -1,25 +1,31 @@
-import CourseCart from "../course_cart/index";
+import CourseCart from "../course_cart/";
+import {lessons_for_course} from "../../actions/api";
 
 const course_big_block = (data) => {
 
     const course_big_block = document.createElement("div");
-
-    const single_lst_item = (name) => `  <li class="course-content-regular__list-item">${name}</li>`;
     course_big_block.className = "course-big-block__wrapper flex-join";
-    // course-big-block__course-overview course_cart
-    //course-big-block__wrap-content course_cart__wrapper
+
     course_big_block.innerHTML = `
 
                     ${CourseCart(data).outerHTML}
 
                     <div class="course-content-regular">
                         <ul class="course-content-regular__list">
-                            ${data.map(item => single_lst_item(item.name)).join("")}
                         </ul>
                     </div>
 
 
     `;
+
+    const root_ul = course_big_block.getElementsByTagName("ul")[0];
+    const add_content = (root_ul) => (data) => data.map(item => {
+        const li = document.createElement("li");
+        li.className = "course-content-regular__list-item";
+        li.innerHTML = `${item.name}`;
+        root_ul.appendChild(li)
+    });
+    lessons_for_course(data._id, add_content(root_ul), () => console.log("err"));
     return course_big_block
-}
+};
 export default course_big_block;

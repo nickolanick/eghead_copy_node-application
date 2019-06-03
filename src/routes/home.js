@@ -11,9 +11,9 @@ export const home_route = (app) => {
 
 
         {"endpoint": "src/components/stats_and_remainders/data.json", "component": NavBar},
-        {"endpoint": "src/components/stats_and_remainders/data.json", "component": StatsAndRemainders},
-        {"endpoint": "/api/new_content", "component": Publishments},
-        {"endpoint": "/api/list_courses", "component": CartListCombination}
+        {"endpoint": "/api/get_random_course", "component": StatsAndRemainders},
+        // {"endpoint": "/api/list_courses", "component": Publishments},
+        // {"endpoint": "/api/list_lessons", "component": CartListCombination}
     ];
     view.map(data => fetch_and_add(app, data.endpoint, data.component));
 };

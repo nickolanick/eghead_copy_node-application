@@ -3,6 +3,7 @@ import bem from "../../helpers/bem";
 
 const b = bem("publications");
 const Publishments = (data) => {
+    console.log(data);
     const publichments = document.createElement("section");
     publichments.className = `${b()}`;
     publichments.innerHTML = `
@@ -39,7 +40,7 @@ const Publishments = (data) => {
             </div>
         </div>
         <div class="${b("list")} website-layout-width website-layout-position">
-            ${data.map(item => CourseCart(item).outerHTML).join("")}
+            ${data.map(item => CourseCart(item,true).outerHTML).join("")}
         </div>
 `;
     return publichments;

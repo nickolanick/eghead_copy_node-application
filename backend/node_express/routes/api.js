@@ -27,9 +27,12 @@ main_router.get('/list_lessons', (req, res) => {
 
 
 main_router.get('/lessons_for_course/:id', (req, res) => {
-    Course.find({id: req.params.id}, (err, data) => {
+    console.log(req.params.id, "ID");
+    Course.findById(req.params.id, (err, data) => {
         res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify(data.lessons));
+        Lesson.find({
+            '_id': {$in: data.lessons}
+        }, (err, docs) => res.end(JSON.stringify(docs)));
     })
 });
 

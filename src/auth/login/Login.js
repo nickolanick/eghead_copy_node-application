@@ -17,14 +17,16 @@ const registration_fail = (root, result) => {
 
 };
 const handle_login = (e, root) => {
+    console.log("HANDELING")
     e.preventDefault();
     console.log(e);
     let inputs = Array.prototype.slice.call(root.getElementsByTagName("input"));
-    let data_collect = {}
-    let data = {}
+    let data_collect = {};
+    let data = {};
     inputs.map(input => console.log(data_collect[input.name] = input.value));
     data['email'] = data_collect['email'];
-    data['password'] = data_collect['psw'];
+    data['password'] = data_collect['password'];
+    console.log(data, "Logger")
     login(data, (result) => registration_success(root, result), registration_fail);
 };
 
@@ -33,22 +35,50 @@ const login_component = (data) => {
 
     const registration_root = document.createElement("div");
 
-    const button = document.createElement("button");
-    button.addEventListener("click", () => handle_login(registration_root));
     registration_root.innerHTML = `
-   <form>
-  <div class="container">
-    <h1>Lgoin</h1>
-    <p>Please fill in this form to login</p>
-    <hr>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-    <button class="button">submit</button>
-  </div>
+<section class="log-in">
+    <div>
+        <h1 class="log-in__title">Sign in to your account</h1>
+    </div>
+    <div class="log-in__grey-box">
+        <form class="log-in__form">
+            <div class="log-in__input-block">
+                <label class="log-in__email-label">Email
+                    <input name="email" class="log-in__email-text">
+                </label>
+            </div>
+            <div class="log-in__input-block">
+                <label class="log-in__email-label">Password
+                    <input name= "password" class="log-in__email-text">
+                </label>
+            </div>
+            <div class="log-in__input-block">
+                <label class="log-in__remember-label">
+                    <input name ="checkbox" type="checkbox">
+                    Remember me
+                </label>
+            </div>
+            <div class="log-in__input-block log-in__buttons">
+                <button  name="submit" type="submit"  class="button log-in__btn-log-in">Sign In</button>
+                <a href="#" class="log-in__btn-log-in-github">
+                    Sign in with Github
+                </a>
+            </div>
+            <br>
+               <div class="log-in__input-block log-in__input-block-info">
+                Need to create an
+                account? <a href="#">Sign up</a>
+            </div>
+            <div class="log-in__input-block log-in__input-block-info">
+                Forgot your
+                password? <a href="#">Recover it</a>
+            </div>
+            <div class="log-in__input-block log-in__input-block-info">
+                <a href="#">Enterprise Sign In</a>
+            </div>
+        </form>
+    </div>
+</section>
 </form>
     `;
 

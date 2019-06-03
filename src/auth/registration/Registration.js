@@ -20,8 +20,8 @@ const handle_registration = (e, root) => {
     let data = {}
     inputs.map(input => console.log(data_collect[input.name] = input.value));
     data['email'] = data_collect['email'];
-    data['password'] = data_collect['psw'];
-    data['name'] = "kolia";
+    data['password'] = data_collect['password'];
+    data['name'] = data_collect['name'];
     console.log(data);
     registrate(data, (result) => registration_success(root, result), registration_fail);
 };
@@ -40,29 +40,51 @@ const registration = (data) => {
     // button.innerHTML = "register"
     // registration_root.className = 'registration';
     registration_root.innerHTML = `
-   <form>
-  <div class="container">
-    <h1>Register</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-    <button class="button">submit</button>
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-    <hr>
-    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-     <button id="tmp"></button>
-  </div>
-
-  <div class="container signin">
-    <p>Already have an account? <a href="#">Sign in</a>.</p>
-  </div>
-</form>
+  <section class="log-in">
+    <div>
+        <h1 class="log-in__title">
+            Create your egghead account.
+        </h1>
+    </div>
+    <div class="log-in__grey-box">
+        <form class="log-in__form">
+            <div class="log-in__input-block log-in__buttons">
+                <a href="#" class="log-in__btn-log-in-github">
+                    Sign up with Github
+                </a>
+            </div>
+            <div class="log-in__input-block">
+                <em>or</em>
+            </div>
+            <div class="log-in__input-block">
+                <label class="log-in__email-label">First Name
+                    <input name="name" class="log-in__email-text">
+                </label>
+            </div>
+            <div class="log-in__input-block">
+                <label class="log-in__email-label">Email
+                    <input name="email" class="log-in__email-text">
+                </label>
+            </div>
+            <div class="log-in__input-block">
+                <label class="log-in__email-label">Password
+                    <input name="password" type="password" class="log-in__email-text">
+                </label>
+            </div>
+            <div class="log-in__input-block log-in__buttons">
+                <button  class="log-in__btn-log-in button">Create account</button>
+            </div>
+            <br>
+            <div class="log-in__input-block log-in__input-block-info">
+                Have an account <a href="#">Sign in</a>
+            </div>
+            <div class="log-in__input-block log-in__input-block-info">
+                Forgot your
+                password? <a href="#">Recover it</a>
+            </div>
+        </form>
+    </div>
+</section>
     `;
 
     registration_root.getElementsByClassName("button")[0].addEventListener("click", (e) => handle_registration(e, registration_root));

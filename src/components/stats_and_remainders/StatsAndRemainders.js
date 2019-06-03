@@ -5,18 +5,17 @@ const b = bem("stats_and_remainders");
 
 const StatsAndRemainders = data => {
 
-
+    console.log(data,"STATTs")
     const stats_and_remainders = document.createElement("section");
-    stats_and_remainders.className = "stats_and_remainders";
-
     stats_and_remainders.innerHTML = `
         <div class="${b("wrapper )")} flex-join website-layout-width website-layout-position">
             <div class="course-big-block">
                 <h2 class="${b("header)")} ">CONTINUE WATCHING</h2>
-                ${course_big_block(data).outerHTML}
+                
             </div>
             <div class="stats-block">
                 <h2 class="${b("header)")} ">STATS</h2>
+                
                 <div class="stats-block-wrapper">
 
                     <div class="flex-join">
@@ -49,6 +48,14 @@ const StatsAndRemainders = data => {
             </div>
         </div>
 `;
+
+    stats_and_remainders.className = "stats_and_remainders";
+    const tmp = stats_and_remainders.getElementsByClassName("course-big-block")[0];
+    // console.log(tmp);
+    const new_elem = course_big_block(data);
+    tmp.appendChild(new_elem);
+
+
     return stats_and_remainders;
 }
 export default StatsAndRemainders;
