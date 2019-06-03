@@ -1,17 +1,16 @@
 export const fetch_and_add = (app, endpoint, component) => {
     const tmp = document.createElement("div");
-    // app.appendChild(tmp);
+    tmp.innerHTML = `
+    <h1>::))</h1>
+    `
+    app.appendChild(tmp);
+
 
     fetch(endpoint).then(res => res.json()).then(
         res => {
-            app.appendChild(component(res));
-            // setOuter(tmp, component(res).outerHTML);
+            app.replaceChild(component(res),tmp);
         }
     ).catch(err => {
         // tmp.outerHTML = `error `
     });
-};
-
-const setOuter = (elem, data) => {
-    elem.outerHTML = data;
 };
