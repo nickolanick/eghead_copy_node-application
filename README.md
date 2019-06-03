@@ -19,6 +19,11 @@ docker-compose up
 npm i
 npm run start
 ```
+### extra scripts
+populates db with lorem data
+```bash
+npm run populate
+```
 
 ### Tech used
 
