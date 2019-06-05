@@ -1,0 +1,1 @@
+export const CheckAction = (storeObj, action,store) => storeObj.fetching || storeObj.fetched ? null : action(store);
