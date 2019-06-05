@@ -21,8 +21,10 @@ class CourseCart extends Component {
 
     render() {
         let users = store.state.allUsers;
-        if (store.state.allCourses.fetched && users.fetched) {
+        let courses = store.state.allCourses;
+        if (courses.fetched && users.fetched) {
             let data = store.state.allCourses.data.filter(course => course['_id'] === this.course_id)[0];
+            let course_author = users.data.filter(user => user["_id"] === data.author)[0];
             this.container.className = b() + (this.display_list ? ` ${b(["space_between_inline"])}` : "");
             this.container.style.width = this.display_list ? "33%" : "100%";
             this.container.innerHTML = `
@@ -43,18 +45,20 @@ class CourseCart extends Component {
                                 <div class="mini-profile__content-wrapper">
                                     <img class="icon icon--small" src="/images/ari-avatar.jpg" alt="">
                                     <div class="mini-profile__content">
-                                        <h3 class="mini-profile__content-header">${users.data.filter(user=>user["_id"] ===data.author)[0].name}</h3>
-                                        <span class="mini-profile__content-sub_header">15 lessons . 41m</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <img src="/images/profileMiniFolder.svg" alt="profileMiniFolder">
-                                </div>
-                            </div>
+                                        <h3 class="mini-profile__content-header">${course_author.name}</h3>
+                                        <span class="mini-profile__content-sub_header">${data.lessons.length} lessons . 41m</span>
+                </div>
+                </div>
+                <div>
+                <img src="/images/profileMiniFolder.svg" alt="profileMiniFolder">
+                </div>
+                </div>
 
-                        </div>
-            </div>
-    `;}
-    }
-};
-export default CourseCart;
+                </div>
+                </div>
+                `
+
+                ;}
+                    }
+                };
+                export default CourseCart;

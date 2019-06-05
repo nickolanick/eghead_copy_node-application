@@ -16,7 +16,6 @@ const registration_fail = (root, result) => {
 
 };
 const handle_login = (e, root) => {
-    console.log("HANDELING")
     e.preventDefault();
     console.log(e);
     let inputs = Array.prototype.slice.call(root.getElementsByTagName("input"));
@@ -25,11 +24,10 @@ const handle_login = (e, root) => {
     inputs.map(input => console.log(data_collect[input.name] = input.value));
     data['email'] = data_collect['email'];
     data['password'] = data_collect['password'];
-    console.log(data, "Logger")
     login(data, (result) => registration_success(root, result), registration_fail);
 };
 
-const login_component = (data) => {
+const login_component = () => {
 
 
     const registration_root = document.createElement("div");
@@ -37,7 +35,7 @@ const login_component = (data) => {
     registration_root.innerHTML = `
 <section class="log-in">
     <div>
-        <h1 class="log-in__title">Sign in to your account</h1>
+        <h1 class="log-in__title">Sign in to your egghead account.</h1>
     </div>
     <div class="log-in__grey-box">
         <form class="log-in__form">
@@ -48,7 +46,7 @@ const login_component = (data) => {
             </div>
             <div class="log-in__input-block">
                 <label class="log-in__email-label">Password
-                    <input name= "password" class="log-in__email-text">
+                    <input name="password" type="password" class="log-in__email-text">
                 </label>
             </div>
             <div class="log-in__input-block">

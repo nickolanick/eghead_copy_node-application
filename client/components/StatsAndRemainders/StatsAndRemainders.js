@@ -34,15 +34,10 @@ export default class StatsAndRemainders extends Component {
     render() {
         let courses = store.state.allCourses;
         let lessons = store.state.allLessons;
-        if (courses.fetched && lessons.fetched) {
-            console.log(courses.data);
-            console.log(lessons.data);
-        }
         let data = store.state.allCourses;
         this.container.innerHTML = '';
         if (data.fetched && lessons.fetched) {
             data = data.data[0];
-            console.log(data);
             this.container.innerHTML +=
                 `<div class="${b("wrapper")} flex-join website-layout-width website-layout-position">
                     <div class="course-big-block">
@@ -58,7 +53,7 @@ export default class StatsAndRemainders extends Component {
 
                             <span class="stats-block__count">0</span>
 
-                            <span class="stats-block__block-header">Lessong completed</span>
+                            <span class="stats-block__block-header">Lessons completed</span>
 
                         </div>
                         <div class="stats-block__single-stat">
@@ -72,10 +67,10 @@ export default class StatsAndRemainders extends Component {
                     </div>
 
                     <button class="stats-block__rect-stat">
-                        <h4>
+                        <span>
                             VIEW FULL HISTORY
-                        </h4>
-                        <span>back</span>
+                        </span>
+                        <img src="/images/clockBack.svg" alt="">
                     </button>
 
                 </div>

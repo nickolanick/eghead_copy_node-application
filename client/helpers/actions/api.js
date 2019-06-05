@@ -9,9 +9,9 @@ export const getAllCourses = (store) => {
     store.dispatch(getAllCoursesStartAction, {});
     fetch(endpoint, {
         method: 'get',
-    }).then(function (response) {
+    }).then((response) => {
         return response.json()
-    }).then(function (data) {
+    }).then((data) => {
         store.dispatch(getAllCoursesSuccessAction, data);
     }).catch(err => store.dispatch(getAllCoursesErrorAction, err));
 };
@@ -22,9 +22,9 @@ export const getAllLessons = (store) => {
     store.dispatch(getAllLessonsStartAction, {});
     fetch(endpoint, {
         method: 'get',
-    }).then(function (response) {
+    }).then((response) => {
         return response.json()
-    }).then(function (data) {
+    }).then((data) => {
         store.dispatch(getAllLessonsSuccessAction, data);
     }).catch(err => store.dispatch(getAllLessonsErrorAction, err));
 };

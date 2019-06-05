@@ -16,7 +16,7 @@ class CourseBigBlock extends Component {
     }
 
     static add_content(item) {
-        return `<li class="course-content-regular__list-item">${item}</li>`
+        return `<li class="course-content-regular__list-item"><div class="course-content-regular__list-item-title">${item}</div><div class="course-content-regular__list-item-time">04:24</div></li>`
     };
 
     render() {

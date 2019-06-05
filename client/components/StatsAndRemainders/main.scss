@@ -8,11 +8,14 @@ $main-grey: #141618;
 .stats_and_remainders {
   background-color: $main-dark;
   padding: 50px 0;
-  &__header{
-
+  &__header {
+    padding-bottom: 15px;
+    color: #f8f8f8;
+    font-weight: 400;
   }
   &__wrapper {
-    margin-top:  10px;
+    margin-top: 10px;
+    box-sizing: border-box;
     padding-left: $main-padding;
     padding-right: $main-padding;
     color: #fff;
@@ -22,26 +25,32 @@ $main-grey: #141618;
 //stats-block
 
 .stats-block {
+  display: flex;
+  flex-direction: column;
   width: 450px;
   &__single-stat {
     padding-top: 20px;
-    height: 90px ;
+    height: 90px;
     padding-bottom: 20px;
     flex: 1;
     background-color: #21252d;
     display: flex;
+
     justify-content: center;
     flex-direction: column;
     align-items: center;
   }
-  &__space{
+  &__space {
     margin-right: 10px;
   }
-  &__block-header{
-    color: hsla(0,0%,100%,.6);
+  &__block-header {
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding-top: 20px;
+    color: hsla(0, 0%, 100%, .6);
     font-size: .75rem;
   }
-  &__count{
+  &__count {
     font-size: 2.25rem;
   }
   &__rect-stat {
@@ -50,7 +59,9 @@ $main-grey: #141618;
     color: #fff;
     border: none;
     background-color: #21252d;
-    padding: 10px 5px;
+    padding: 1rem 1rem;
+    color: hsla(0, 0%, 100%, .6);
+    letter-spacing: .1em;
     margin-top: 10px;
     display: flex;
     justify-content: space-between;

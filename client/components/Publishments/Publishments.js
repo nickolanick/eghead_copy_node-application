@@ -52,9 +52,8 @@ class Publishments extends Component {
         let allCourses = store.state.allCourses;
         let elem = this.container.getElementsByClassName(b("list"))[0];
         if (allCourses.fetched) {
-            allCourses.data.map(item => new CourseCart(elem, item['_id'], true))
+            allCourses.data.map(item => new CourseCart(elem,item['_id'], true))
         }
-        // data.fetched ? data.data.map(item => elem.appendChild(CourseCart(item, true))) : null;
 
 
     }
