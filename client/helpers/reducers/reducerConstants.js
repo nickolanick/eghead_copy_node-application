@@ -13,3 +13,9 @@ export const getAllLessonsErrorAction = "getAllLessonsError";
 export const getAllUsersErrorAction = "getAllUsersError";
 export const getAllUsersStartAction = "getAllUsersStart";
 export const getAllUsersSuccessAction = "getAllUsersSuccess";
+
+//LOGIN
+
+export const userLoginStartAction = "userLoginStart";
+export const userLoginSuccessAction = "userLoginSuccess";
+export const userLoginErrorAction = "userLoginError";

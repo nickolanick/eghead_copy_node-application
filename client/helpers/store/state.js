@@ -24,9 +24,15 @@ const allUsers = {
         data: []
     }
 };
-
+const loggedUser = {
+    loggedUser: {
+        fetching: false,
+        fetched: false,
+        loggedIn: false,
+        data: {}
+    }
+};
 
 export default {
-    ...allCourses, ...allLessons, ...allUsers
-
+    ...allCourses, ...allLessons, ...allUsers, ...loggedUser
 };

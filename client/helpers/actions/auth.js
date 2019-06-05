@@ -15,19 +15,19 @@ export const getAllUsers = (store) => {
     }).catch(err => store.dispatch(getAllUsersErrorAction, err));
 };
 
-// export const login = (store,data) => {
-//     let endpoint = '/auth/login';
-//     store.dispatch(, {});
-//     fetch(endpoint, {
-//         method: 'post',
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-//     }).then(function (response) {
-//         return response.json();
-//     }).then(function (data) {
-//         store.dispatch(, data);
-//     }).catch(err => store.dispatch(, err));
-// };
+export const login = (store,data) => {
+    let endpoint = '/auth/login';
+    store.dispatch(, {});
+    fetch(endpoint, {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        store.dispatch(, data);
+    }).catch(err => store.dispatch(, err));
+};

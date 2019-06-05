@@ -32,5 +32,17 @@ export default {
         context.commit('getAllUsersError', payload);
     },
 
+
+
+    userLoginStart(context, payload) {
+        context.commit('userLoginStart', payload);
+    },
+    userLoginSuccess(context, payload) {
+        context.commit('userLoginSuccess', payload);
+    },
+    userLoginError(context, payload) {
+        context.commit('userLoginError', payload);
+    },
+
 };
 
