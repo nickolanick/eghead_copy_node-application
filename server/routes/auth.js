@@ -4,6 +4,14 @@ const jwt = require("jsonwebtoken");
 const User = require("../db").User;
 
 
+auth_router.get('/get_users', (req, res) => {
+    User.find({}, (err, users) => {
+            return res
+                .status(200)
+                .send(JSON.stringify(users))
+        }
+    )
+});
 
 auth_router.post('/registration', (req, res) => {
     const user = req.body;

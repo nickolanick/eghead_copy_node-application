@@ -1,5 +1,4 @@
-import CourseCart from "../course_cart/";
-import {lessons_for_course} from "../../actions/api";
+import CourseCart from "../CourseCart/";
 import Component from "../../helpers/lib/component";
 import store from "../../helpers/store";
 
@@ -24,7 +23,7 @@ class CourseBigBlock extends Component {
 
         this.container.className = "course-big-block__wrapper flex-join";
         this.container.innerHTML = ``;
-        this.container.appendChild(CourseCart(this.data));
+        new CourseCart(this.container, this.data['_id']);
         this.container.innerHTML += `
     <div class="course-content-regular">
                         <ul class="course-content-regular__list">

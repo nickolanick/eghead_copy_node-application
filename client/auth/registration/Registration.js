@@ -1,5 +1,4 @@
-import CourseCart from "../../components/course_cart";
-import {registrate} from "../../actions/auth";
+import CourseCart from "../../components/CourseCart";
 
 
 const registration_success = (root, result) => {
@@ -16,8 +15,8 @@ const handle_registration = (e, root) => {
     e.preventDefault();
     console.log(e);
     let inputs = Array.prototype.slice.call(root.getElementsByTagName("input"));
-    let data_collect = {}
-    let data = {}
+    let data_collect = {};
+    let data = {};
     inputs.map(input => console.log(data_collect[input.name] = input.value));
     data['email'] = data_collect['email'];
     data['password'] = data_collect['password'];

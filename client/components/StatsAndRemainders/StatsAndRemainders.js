@@ -5,6 +5,7 @@ import store from "../../helpers/store/index.js";
 import CourseBigBlock from "../CourseBigBlock/CourseBigBlock";
 import {getAllCourses, getAllLessons} from "../../helpers/actions/api";
 import {CheckAction} from "../../helpers/CheckAction";
+import {getAllUsers} from "../../helpers/actions/auth";
 
 const b = bem("stats_and_remainders");
 
@@ -19,12 +20,13 @@ export default class StatsAndRemainders extends Component {
         this.container = container;
         this.container.className = b();
         app.appendChild(this.container);
-        this.dispatchAll();
+        StatsAndRemainders.dispatchAll();
     }
 
-    dispatchAll() {
+    static dispatchAll() {
         CheckAction(store.state.allCourses, getAllCourses, store);
         CheckAction(store.state.allLessons, getAllLessons, store);
+        CheckAction(store.state.allUsers, getAllUsers, store);
 
     }
 
@@ -32,11 +34,11 @@ export default class StatsAndRemainders extends Component {
     render() {
         let courses = store.state.allCourses;
         let lessons = store.state.allLessons;
-        if(courses.fetched && lessons.fetched){
+        if (courses.fetched && lessons.fetched) {
             console.log(courses.data);
             console.log(lessons.data);
         }
-        let data =store.state.allCourses;
+        let data = store.state.allCourses;
         this.container.innerHTML = '';
         if (data.fetched && lessons.fetched) {
             data = data.data[0];

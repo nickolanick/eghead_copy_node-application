@@ -28,3 +28,4 @@ export const getAllLessons = (store) => {
         store.dispatch(getAllLessonsSuccessAction, data);
     }).catch(err => store.dispatch(getAllLessonsErrorAction, err));
 };
+

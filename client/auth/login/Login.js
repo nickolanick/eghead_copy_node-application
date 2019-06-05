@@ -1,5 +1,4 @@
-import CourseCart from "../../components/course_cart";
-import {login, registrate} from "../../actions/auth";
+import CourseCart from "../../components/CourseCart";
 
 
 const registration_success = (root, result) => {

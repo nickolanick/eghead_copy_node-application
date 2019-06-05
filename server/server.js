@@ -8,7 +8,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 
-
 const app = express();
 
 const jwtCheck = express_jwt({

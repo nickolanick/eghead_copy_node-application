@@ -1,7 +1,4 @@
 import "./css/main.scss"
-import nav_bar from "./components/NavBar/NavBar";
-import StatsAndRemainders from "./components/StatsAndRemainders/index.js";
-import publichments from "./components/Publishments/Publishments";
 import {home_url, login_url, registration_url} from "./routes/routePaths";
 import {home_route} from "./routes/home";
 import {f_0_f_route} from "./routes/404";

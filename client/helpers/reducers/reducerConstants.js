@@ -7,3 +7,9 @@ export const getAllCoursesErrorAction = "getAllCoursesError";
 export const getAllLessonsStartAction = "getAllLessonsStart";
 export const getAllLessonsSuccessAction = "getAllLessonsSuccess";
 export const getAllLessonsErrorAction = "getAllLessonsError";
+
+
+//USERS
+export const getAllUsersErrorAction = "getAllUsersError";
+export const getAllUsersStartAction = "getAllUsersStart";
+export const getAllUsersSuccessAction = "getAllUsersSuccess";

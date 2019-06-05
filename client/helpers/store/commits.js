@@ -9,6 +9,8 @@ export default {
         context.commit('getAllCoursesError', payload);
     },
 
+
+
     getAllLessonsStart(context, payload) {
         context.commit('getAllLessonsStart', payload);
     },
@@ -18,4 +20,17 @@ export default {
     getAllLessonsError(context, payload) {
         context.commit('getAllLessonsError', payload);
     },
+
+
+    getAllUsersStart(context, payload) {
+        context.commit('getAllUsersStart', payload);
+    },
+    getAllUsersSuccess(context, payload) {
+        context.commit('getAllUsersSuccess', payload);
+    },
+    getAllUsersError(context, payload) {
+        context.commit('getAllUsersError', payload);
+    },
+
 };
+
