@@ -19,3 +19,10 @@ export const getAllUsersSuccessAction = "getAllUsersSuccess";
 export const userLoginStartAction = "userLoginStart";
 export const userLoginSuccessAction = "userLoginSuccess";
 export const userLoginErrorAction = "userLoginError";
+
+//REGISTER
+export const userRegistrationStartAction = "userRegistrationStart";
+export const userRegistrationSuccessAction = "userRegistrationSuccess";
+export const userRegistrationErrorAction = "userRegistrationError";
+
+

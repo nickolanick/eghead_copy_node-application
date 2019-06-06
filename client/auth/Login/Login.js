@@ -1,45 +1,49 @@
-import {login} from "../../helpers/actions/auth";
-import Component from "../../helpers/lib/component";
-import store from "../../helpers/store";
-import {set_cookie} from "../../helpers/cookies";
-
+import { login } from '../../helpers/actions/auth';
+import Component from '../../helpers/lib/component';
+import store from '../../helpers/store';
+import { set_cookie } from '../../helpers/cookies';
 
 class Login extends Component {
+  constructor(app) {
+    let container = document.createElement('div');
+    super({
+      store,
+      element: container,
+    });
+    this.container = container;
+    app.appendChild(this.container);
+    this.render();
+  }
 
-    constructor(app) {
-        let container = document.createElement("div");
-        super({
-            store,
-            element: container
-        });
-        this.container = container;
-        app.appendChild(this.container);
-        this.render();
-    }
+  handle_login(e) {
+    e.preventDefault();
+    let inputs = Array.prototype.slice.call(
+      this.container.getElementsByTagName('input'),
+    );
+    let data_collect = {};
+    let data = {};
+    inputs.map(input => console.log((data_collect[input.name] = input.value)));
+    data['email'] = data_collect['email'];
+    data['password'] = data_collect['password'];
+    login(store, data);
+  }
 
-    handle_login(e) {
-        e.preventDefault();
-        let inputs = Array.prototype.slice.call(this.container.getElementsByTagName("input"));
-        let data_collect = {};
-        let data = {};
-        inputs.map(input => console.log(data_collect[input.name] = input.value));
-        data['email'] = data_collect['email'];
-        data['password'] = data_collect['password'];
-        login(store, data);
-    };
+  onSuccessRegistration() {
+    set_cookie('access_token', store.state.loggedUser.data.access_token);
+    history.pushState(
+      {
+        id: 'homepage',
+      },
+      'egghead',
+      '/',
+    );
+    location.reload();
+  }
 
-    onSuccessRegistration() {
-        set_cookie("access_token", store.state.loggedUser.data.access_token);
-        history.pushState({
-            id: 'homepage'
-        }, 'egghead', "/");
-        location.reload();
-    };
+  render() {
+    store.state.loggedUser.loggedIn ? this.onSuccessRegistration() : null;
 
-    render() {
-        store.state.loggedUser.loggedIn ? this.onSuccessRegistration() : null;
-
-        this.container.innerHTML = `
+    this.container.innerHTML = `
         <section class="log-in">
             <div>
                 <h1 class="log-in__title">Sign in to your egghead account.</h1>
@@ -85,8 +89,9 @@ class Login extends Component {
         </section>
         </form>
     `;
-        this.container.getElementsByClassName("sign_in_button")[0].addEventListener("click", (e) => this.handle_login(e))
-        ;
-    }
-};
+    this.container
+      .getElementsByClassName('sign_in_button')[0]
+      .addEventListener('click', e => this.handle_login(e));
+  }
+}
 export default Login;

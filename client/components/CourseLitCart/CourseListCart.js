@@ -1,19 +1,18 @@
-import {clock, green_flag, mark} from "./icons/icons";
-import bem from "../../helpers/bem";
+import bem from '../../helpers/bem';
 
-const b = bem("course-list-cart");
-const CourseListsCart = (data) => {
-    const course_list_cart = document.createElement("div");
-    course_list_cart.className = "course-list-cart";
+const b = bem('course-list-cart');
+const CourseListsCart = data => {
+  const course_list_cart = document.createElement('div');
+  course_list_cart.className = 'course-list-cart';
 
-    course_list_cart.innerHTML = `
-    <div class="${b("wrapper")}">
-        <div class="${b("description")}">
-        <div class="${b("icon-wrapper")}">
-            ${green_flag}
+  course_list_cart.innerHTML = `
+    <div class="${b('wrapper')}">
+        <div class="${b('description')}">
+        <div class="${b('icon-wrapper')}">
+            <img src="/images/greenFlag.svg" alt="">
         </div>
-        <div class="${b("title-author")}">
-            <h1 class="${b("header")}">${data.name}</h1>
+        <div class="${b('title-author')}">
+            <h1 class="${b('header')}">${data.name}</h1>
                 <div class="profile-minimal">
                     <a class="profile-minimal__author">Alan Show</a> 
                     <span class="profile-minimal__extra">LESSON</span>
@@ -22,15 +21,15 @@ const CourseListsCart = (data) => {
         </div>
 
 
-        <div class="${b("time_script")}">
-            <div class="${b("icon-text-share")}">${clock} ${data.time}</div>
-            <div class="${b("icon-text-share")}">${mark} ${data.language}</div>
+        <div class="${b('time_script')}">
+            <div class="${b('icon-text-share')}"><img src="/images/clock.svg" alt="clock icon"> <span class="${b('text-share-content')}">${data.time}</span></div>
+            <div class="${b('icon-text-share')}"><img src="/images/mark.svg" alt="mark icon">   <span class="${b('text-share-content')}">${data.language}</span></div>
         </div>
             
     </div>
     
     `;
-    return course_list_cart
+  return course_list_cart;
 };
 
-export default CourseListsCart
+export default CourseListsCart;

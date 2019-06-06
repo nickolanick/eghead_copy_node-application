@@ -1,45 +1,55 @@
-import bem from "../../helpers/bem";
-import {get_cookie, get_token} from "../../helpers/cookies";
+import bem from '../../helpers/bem';
+import { get_cookie, get_token } from '../../helpers/cookies';
 
-const b = bem("nav-bar");
+const b = bem('nav-bar');
 export default class NavBar {
-    constructor(app) {
-        this.container = document.createElement('nav');
-        this.container.className = `${b()}`;
-        app.appendChild(this.container);
-        this.render();
-    }
+  constructor(app) {
+    this.container = document.createElement('nav');
+    this.container.className = `${b()}`;
+    app.appendChild(this.container);
+    this.render();
+  }
 
-    getProfile() {
-        const logged = get_token();
-        return logged ?
-            `<button class="${b("feadback-button")}">Feedback</button>
-            <button class="${b("profile")}">
+  getProfile() {
+    const logged = get_token();
+    return logged
+      ? `<button class="${b('feadback-button')}">Feedback</button>
+            <button class="${b('profile')}">
             <span>Mykhailo</span>
-            <img class="${b("profile-avatar")}" src="/images/headhock.png" alt="avatar">
+            <img class="${b(
+              'profile-avatar',
+            )}" src="/images/headhock.png" alt="avatar">
             </button>`
-            :
-            `<a  class="${b("login-link")}" href="/login">login</a>`
-    }
+      : `<a  class="${b('login-link')}" href="/login">login</a>`;
+  }
 
-    render() {
-
-        this.container.innerHTML = ``;
-        this.container.innerHTML += `
-        <div class="${b("wrapper")} website-layout-width website-layout-position">
-               <div class="${b("padding-wrapper")}">
-                <div class="${b("headers")}">
-                <img src="/images/logo.svg" class="${b("headers-logo")}" alt="Egghead logo">
+  render() {
+    this.container.innerHTML = ``;
+    this.container.innerHTML += `
+        <div class="${b(
+          'wrapper',
+        )} website-layout-width website-layout-position">
+               <div class="${b('padding-wrapper')}">
+                <div class="${b('headers')}">
+                <img src="/images/logo.svg" class="${b(
+                  'headers-logo',
+                )}" alt="Egghead logo">
         
-                <div class="${b("headers-content")}">
+                <div class="${b('headers-content')}">
                     <img src="/images/play_button.svg" alt="">
-                    <a class="${b("headers-content-link")}" href="#">Learn to Code</a>
+                    <a class="${b(
+                      'headers-content-link',
+                    )}" href="#">Learn to Code</a>
                 </div>
             </div>
-            <div class="${b("navigation")}">
-                <form class="${b("form")}" action="">
-                    <input class="${b("input")}" placeholder="Search ..." type="text">
-                    <button class="${b("form-button")}" type="submit"><img src="images/search_icon.svg" alt=""></button>
+            <div class="${b('navigation')}">
+                <form class="${b('form')}" action="">
+                    <input class="${b(
+                      'input',
+                    )}" placeholder="Search ..." type="text">
+                    <button class="${b(
+                      'form-button',
+                    )}" type="submit"><img src="images/search_icon.svg" alt=""></button>
                 </form>
                 ${this.getProfile()}
 
@@ -47,5 +57,5 @@ export default class NavBar {
         </div>
     </div>
     `;
-    }
-};
+  }
+}

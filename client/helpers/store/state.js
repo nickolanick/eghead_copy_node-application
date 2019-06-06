@@ -32,7 +32,15 @@ const loggedUser = {
         data: {}
     }
 };
+const registrationState = {
+    registrationState: {
+        fetching: false,
+        fetched: false,
+        loggedIn: false,
+        data: {}
+    }
+};
 
 export default {
-    ...allCourses, ...allLessons, ...allUsers, ...loggedUser
+    ...allCourses, ...allLessons, ...allUsers, ...loggedUser, ...registrationState
 };

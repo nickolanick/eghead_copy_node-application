@@ -1,12 +1,11 @@
-import bem from "../../helpers/bem";
+import bem from '../../helpers/bem';
 
-const b = bem("nav-bar");
+const b = bem('nav-bar');
 const Footer = () => {
+  const footer = document.createElement('footer');
+  footer.className = `${b()}`;
 
-    const footer = document.createElement("footer");
-    footer.className = `${b()}`;
-
-    footer.innerHTML = `
+  footer.innerHTML = `
     <footer class="footer">
         <div class="footer-block">
             <span class="footer-block__logo">
@@ -45,6 +44,6 @@ const Footer = () => {
         </div>
     </footer>
 `;
-    return footer;
+  return footer;
 };
 export default Footer;

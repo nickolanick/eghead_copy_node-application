@@ -10,7 +10,6 @@ export default {
     },
 
 
-
     getAllLessonsStart(context, payload) {
         context.commit('getAllLessonsStart', payload);
     },
@@ -33,7 +32,6 @@ export default {
     },
 
 
-
     userLoginStart(context, payload) {
         context.commit('userLoginStart', payload);
     },
@@ -42,6 +40,17 @@ export default {
     },
     userLoginError(context, payload) {
         context.commit('userLoginError', payload);
+    },
+
+
+    userRegistrationStart(context, payload) {
+        context.commit('userRegistrationStart', payload);
+    },
+    userRegistrationSuccess(context, payload) {
+        context.commit('userRegistrationSuccess', payload);
+    },
+    userRegistrationError(context, payload) {
+        context.commit('userRegistrationError', payload);
     },
 
 };

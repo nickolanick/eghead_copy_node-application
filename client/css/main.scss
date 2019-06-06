@@ -26,10 +26,6 @@ body {
   margin-left: auto;
 }
 
-//nav-bar
-//course-big-block
-
-
 //course-content-regular
 .course-content-regular {
   flex: 1;
@@ -91,9 +87,10 @@ body {
 
   align-items: center;
   background-color: #fff;
+
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1rem .5rem 1rem;
+  padding: 1rem 1rem 15px;
   &__content-wrapper {
     justify-content: center;
     align-items: center;
@@ -119,9 +116,7 @@ body {
   }
 
 }
-
 //icon
-
 .icon {
   display: block;
   border-radius: 99999px;
@@ -131,5 +126,3 @@ body {
   }
 
 }
-
-//flex adders
