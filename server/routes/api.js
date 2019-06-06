@@ -2,46 +2,25 @@ const express = require('express');
 const Course = require('../db').Course;
 const Lesson = require('../db').Lesson;
 const passport = require('passport');
-const main_router = express.Router();
+const api = express.Router();
 
-main_router.get(
-  '/list_courses',
-  passport.authenticate('jwt', (session = false)),
-  (req, res) => {
-    Course.find({}, (err, data) => {
-      res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify(data));
-    });
-  },
+api.get('/courses', passport.authenticate('jwt', (session = false)), async (req, res) => {
+        try {
+            let data = await Course.find().exec();
+            res.send(data)
+        } catch (e) {
+            res.status(500).send(e)
+        }
+    },
 );
-main_router.get(
-  '/get_random_course',
-  passport.authenticate('jwt', (session = false)),
-  (req, res) => {
-    Course.find({}, (err, data) => {
-      res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify(data[0]));
-    });
-  },
-);
-main_router.get('/list_lessons', (req, res) => {
-  Lesson.find({}, (err, data) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(data));
-  });
+
+api.get('/lessons', passport.authenticate('jwt', (session = false)), async (req, res) => {
+    try {
+        let data = await Lesson.find().exec();
+        res.send(data)
+    } catch (e) {
+        res.status(500).send(e)
+    }
 });
 
-main_router.get(
-  '/lessons_for_course/:id',
-  passport.authenticate('jwt', (session = false)),
-  (req, res) => {
-    Course.findById(req.params.id, (err, data) => {
-      res.setHeader('Content-Type', 'application/json');
-      Lesson.find({ _id: { $in: data.lessons } }, (err, docs) =>
-        res.end(JSON.stringify(docs)),
-      );
-    });
-  },
-);
-
-module.exports = main_router;
+module.exports = api;

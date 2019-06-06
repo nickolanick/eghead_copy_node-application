@@ -1,14 +1,14 @@
-import store from '../../helpers/store';
-import Component from '../../helpers/lib/component';
-import { set_cookie } from '../../helpers/cookies';
-import { registrate } from '../../helpers/actions/auth';
+import store from "../../helpers/store";
+import Component from "../../helpers/lib/component";
+import { set_cookie } from "../../helpers/cookies";
+import { registrate } from "../../helpers/actions/auth";
 
 class Registration extends Component {
   constructor(app) {
-    let container = document.createElement('div');
+    let container = document.createElement("div");
     super({
       store,
-      element: container,
+      element: container
     });
     this.container = container;
     app.appendChild(this.container);
@@ -18,32 +18,34 @@ class Registration extends Component {
   handle_registration(e) {
     e.preventDefault();
     let inputs = Array.prototype.slice.call(
-      this.container.getElementsByTagName('input'),
+      this.container.getElementsByTagName("input")
     );
     let data_collect = {};
     let data = {};
-    inputs.map(input => console.log((data_collect[input.name] = input.value)));
-    data['email'] = data_collect['email'];
-    data['password'] = data_collect['password'];
-    data['name'] = data_collect['name'];
+    inputs.map(input => (data_collect[input.name] = input.value));
+    data["email"] = data_collect["email"];
+    data["password"] = data_collect["password"];
+    data["name"] = data_collect["name"];
     registrate(store, data);
   }
 
-  onSuccessRegistration() {
+  static onSuccessRegistration() {
     history.pushState(
       {
-        id: 'homepage',
+        id: "homepage"
       },
-      'egghead',
-      '/login',
+      "egghead",
+      "/login"
     );
     location.reload();
   }
 
   render() {
-    store.state.registrationState.fetched ? this.onSuccessRegistration() : null;
+    store.state.registrationState.fetched
+      ? Registration.onSuccessRegistration()
+      : null;
 
-    this.container.className = 'registration';
+    this.container.className = "registration";
     this.container.innerHTML = `
               <section class="log-in">
                 <div>
@@ -93,8 +95,9 @@ class Registration extends Component {
                 `;
 
     this.container
-      .getElementsByClassName('button')[0]
-      .addEventListener('click', e => this.handle_registration(e));
+      .getElementsByClassName("button")[0]
+      .addEventListener("click", e => this.handle_registration(e));
   }
 }
+
 export default Registration;

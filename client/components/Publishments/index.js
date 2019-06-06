@@ -1,4 +1,3 @@
 import "./main.scss";
-import Publishments from "./Publishments";
 
-export default Publishments;
+export { default } from "./Publishments";

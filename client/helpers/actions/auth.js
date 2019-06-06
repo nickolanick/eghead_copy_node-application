@@ -7,14 +7,14 @@ import {
   userLoginSuccessAction,
   userRegistrationErrorAction,
   userRegistrationStartAction,
-  userRegistrationSuccessAction,
-} from '../reducers/reducerConstants';
+  userRegistrationSuccessAction
+} from "../reducers/reducerConstants";
 
 export const getAllUsers = store => {
-  let endpoint = '/auth/get_users';
+  let endpoint = "/auth/get_users";
   store.dispatch(getAllUsersStartAction, {});
   fetch(endpoint, {
-    method: 'get',
+    method: "get"
   })
     .then(response => {
       return response.json();
@@ -26,15 +26,15 @@ export const getAllUsers = store => {
 };
 
 export const login = (store, data) => {
-  let endpoint = '/auth/login';
+  let endpoint = "/auth/login";
   store.dispatch(userLoginStartAction, {});
   fetch(endpoint, {
-    method: 'post',
+    method: "post",
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(data)
   })
     .then(function(response) {
       return response.json();
@@ -46,15 +46,15 @@ export const login = (store, data) => {
 };
 
 export const registrate = (store, data) => {
-  let endpoint = '/auth/registration';
+  let endpoint = "/auth/registration";
   store.dispatch(userRegistrationStartAction, {});
   fetch(endpoint, {
-    method: 'post',
+    method: "post",
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(data)
   })
     .then(function(response) {
       return response.json();

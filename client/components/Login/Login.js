@@ -1,14 +1,14 @@
-import { login } from '../../helpers/actions/auth';
-import Component from '../../helpers/lib/component';
-import store from '../../helpers/store';
-import { set_cookie } from '../../helpers/cookies';
+import { login } from "../../helpers/actions/auth";
+import Component from "../../helpers/lib/component";
+import store from "../../helpers/store";
+import { set_cookie } from "../../helpers/cookies";
 
 class Login extends Component {
   constructor(app) {
-    let container = document.createElement('div');
+    let container = document.createElement("div");
     super({
       store,
-      element: container,
+      element: container
     });
     this.container = container;
     app.appendChild(this.container);
@@ -18,24 +18,24 @@ class Login extends Component {
   handle_login(e) {
     e.preventDefault();
     let inputs = Array.prototype.slice.call(
-      this.container.getElementsByTagName('input'),
+      this.container.getElementsByTagName("input")
     );
     let data_collect = {};
     let data = {};
     inputs.map(input => console.log((data_collect[input.name] = input.value)));
-    data['email'] = data_collect['email'];
-    data['password'] = data_collect['password'];
+    data["email"] = data_collect["email"];
+    data["password"] = data_collect["password"];
     login(store, data);
   }
 
   onSuccessRegistration() {
-    set_cookie('access_token', store.state.loggedUser.data.access_token);
+    set_cookie("access_token", store.state.loggedUser.data.access_token);
     history.pushState(
       {
-        id: 'homepage',
+        id: "homepage"
       },
-      'egghead',
-      '/',
+      "egghead",
+      "/"
     );
     location.reload();
   }
@@ -90,8 +90,8 @@ class Login extends Component {
         </form>
     `;
     this.container
-      .getElementsByClassName('sign_in_button')[0]
-      .addEventListener('click', e => this.handle_login(e));
+      .getElementsByClassName("sign_in_button")[0]
+      .addEventListener("click", e => this.handle_login(e));
   }
 }
 export default Login;

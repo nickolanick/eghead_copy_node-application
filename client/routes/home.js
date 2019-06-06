@@ -5,11 +5,9 @@ import CartListCombination from "../components/ListOfCarts/";
 import CourseBigBlock from "../components/CourseBigBlock/";
 import Footer from "../components/Footer/";
 
-export const home_route = (app) => {
-
-    new NavBar(app);
-    new StatsAndRemainders(app);
-    new Publishments(app);
-    new CartListCombination(app);
+export const home_route = app => {
+  new NavBar(app);
+  new StatsAndRemainders(app);
+  new Publishments(app);
+  new CartListCombination(app);
 };
-

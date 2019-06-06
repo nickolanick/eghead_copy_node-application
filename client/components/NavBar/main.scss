@@ -8,21 +8,21 @@
 //}
 $main-dark: #141618;
 $main-padding: 2rem;
-$whitish: hsla(0, 0%, 100%, .6);
+$whitish: hsla(0, 0%, 100%, 0.6);
 $main-grey: #141618;
 
 .nav-bar {
   background-color: $main-dark;
-&__login-link{
-  text-decoration: none;
-  color: #fff;
-  padding-left: 10px;
-}
-  &__feadback-button{
+  &__login-link {
+    text-decoration: none;
+    color: #fff;
+    padding-left: 10px;
+  }
+  &__feadback-button {
     background-color: transparent;
     color: #fff;
     height: 34px;
-    border: 1px solid rgba(255, 255, 255, 0.1);;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     padding: 0 6px;
     font-size: 14px;
@@ -31,15 +31,14 @@ $main-grey: #141618;
     font-family: sans-serif;
     transition: background 150ms ease 0s;
     cursor: pointer;
-
   }
-  &__profile-avatar{
+  &__profile-avatar {
     width: 32px;
     height: 32px;
     border-radius: 999px;
     margin-left: 15px;
   }
-  &__profile{
+  &__profile {
     display: flex;
     align-items: center;
     color: #fff;
@@ -47,7 +46,7 @@ $main-grey: #141618;
     margin-left: 20px;
     background-color: transparent;
   }
-  &__feadback-button:hover{
+  &__feadback-button:hover {
     background: rgb(35, 44, 59);
   }
   &__form {
@@ -57,7 +56,6 @@ $main-grey: #141618;
     background-color: #21252d;
   }
   &__form-button {
-
     background-color: transparent;
     padding: 0 9px;
     border-bottom-right-radius: 0.4rem;
@@ -65,7 +63,7 @@ $main-grey: #141618;
     border: none;
     height: 100%;
     cursor: pointer;
-    transition: background-color .15s ease-in-out;
+    transition: background-color 0.15s ease-in-out;
   }
   &__form-button:hover {
     background-color: #316aff;
@@ -91,7 +89,6 @@ $main-grey: #141618;
   }
   &__wrapper {
     height: 60px;
-
   }
   &__headers {
     display: flex;
@@ -102,19 +99,19 @@ $main-grey: #141618;
       margin-right: 25px;
     }
     &-content {
-      padding-left: .5rem;
+      padding-left: 0.5rem;
       cursor: pointer;
       height: 60px;
       display: flex;
       align-items: center;
       opacity: 0.9;
       &-icon {
-        margin-right: .7rem;
+        margin-right: 0.7rem;
       }
       &-link {
         text-transform: none;
         text-decoration: none;
-        color: hsla(0, 0%, 100%, .9);
+        color: hsla(0, 0%, 100%, 0.9);
         font-size: 14px;
         padding-left: 10px;
         font-family: sans-serif;
@@ -128,6 +125,4 @@ $main-grey: #141618;
     justify-content: center;
     align-items: center;
   }
-
 }
-

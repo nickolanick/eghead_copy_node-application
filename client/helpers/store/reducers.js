@@ -5,5 +5,10 @@ import UserLoginReducer from "../reducers/LoginReducer";
 import UserRegistrationReducer from "../reducers/RegistrationReducer";
 
 // concatenation of ALL reducers
-export default {...AllCoursesReducer, ...AllLessonsReducer, ...AllUsersReducer, ...UserLoginReducer, ...UserRegistrationReducer}
-
+export default {
+  ...AllCoursesReducer,
+  ...AllLessonsReducer,
+  ...AllUsersReducer,
+  ...UserLoginReducer,
+  ...UserRegistrationReducer
+};

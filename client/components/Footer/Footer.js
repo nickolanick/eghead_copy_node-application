@@ -1,8 +1,8 @@
-import bem from '../../helpers/bem';
+import bem from "../../helpers/bem";
 
-const b = bem('nav-bar');
+const b = bem("nav-bar");
 const Footer = () => {
-  const footer = document.createElement('footer');
+  const footer = document.createElement("footer");
   footer.className = `${b()}`;
 
   footer.innerHTML = `

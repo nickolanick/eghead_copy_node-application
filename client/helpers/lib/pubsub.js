@@ -1,26 +1,25 @@
 export default class PubSub {
-    constructor() {
-        this.events = {};
+  constructor() {
+    this.events = {};
+  }
+
+  subscribe(event, callback) {
+    let self = this;
+
+    if (!self.events.hasOwnProperty(event)) {
+      self.events[event] = [];
     }
 
-    subscribe(event, callback) {
+    return self.events[event].push(callback);
+  }
 
-        let self = this;
+  publish(event, data = {}) {
+    let self = this;
 
-        if (!self.events.hasOwnProperty(event)) {
-            self.events[event] = [];
-        }
-
-        return self.events[event].push(callback);
+    if (!self.events.hasOwnProperty(event)) {
+      return [];
     }
 
-    publish(event, data = {}) {
-        let self = this;
-
-        if (!self.events.hasOwnProperty(event)) {
-            return [];
-        }
-
-        return self.events[event].map(callback => callback(data));
-    }
+    return self.events[event].map(callback => callback(data));
+  }
 }

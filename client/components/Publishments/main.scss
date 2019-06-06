@@ -1,14 +1,12 @@
-
 .publications {
   background-color: #f4f7f9;
   &__wrapper {
     padding: 4rem 1rem 2rem;
     box-sizing: border-box;
   }
-  &__header-label{
+  &__header-label {
     display: flex;
     flex-direction: column;
-
   }
   &__header-label-title {
     color: #141618;
@@ -17,7 +15,7 @@
     font-weight: 400;
   }
   &__header-label-sub-title {
-    color: rgba(0, 0, 0, .6);
+    color: rgba(0, 0, 0, 0.6);
     font-size: 1rem;
   }
   &__header {
@@ -35,7 +33,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-size: .875rem;
+    font-size: 0.875rem;
     border-radius: 5px;
     box-sizing: border-box;
   }

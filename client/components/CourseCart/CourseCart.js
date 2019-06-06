@@ -1,15 +1,15 @@
-import bem from '../../helpers/bem';
-import Component from '../../helpers/lib/component';
-import store from '../../helpers/store';
+import bem from "../../helpers/bem";
+import Component from "../../helpers/lib/component";
+import store from "../../helpers/store";
 
-const b = bem('course_cart');
+const b = bem("course_cart");
 
 class CourseCart extends Component {
   constructor(app, course_id, display_list = false) {
-    let container = document.createElement('div');
+    let container = document.createElement("div");
     super({
       store,
-      element: container,
+      element: container
     });
     this.course_id = course_id;
     this.display_list = display_list;
@@ -23,20 +23,20 @@ class CourseCart extends Component {
     let courses = store.state.allCourses;
     if (courses.fetched && users.fetched) {
       let data = store.state.allCourses.data.filter(
-        course => course['_id'] === this.course_id,
+        course => course["_id"] === this.course_id
       )[0];
       let course_author = users.data.filter(
-        user => user['_id'] === data.author,
+        user => user["_id"] === data.author
       )[0];
       this.container.className =
-        b() + (this.display_list ? ` ${b(['space_between_inline'])}` : '');
-      this.container.style.width = this.display_list ? '33.33%' : '100%';
+        b() + (this.display_list ? ` ${b(["space_between_inline"])}` : "");
+      this.container.style.width = this.display_list ? "33.33%" : "100%";
       this.container.innerHTML = `
-            <div class="${b('shadow')}">
-                       <div class="${b('wrapper')}">
-                            <div class="${b('image-wrapper')}">
+            <div class="${b("shadow")}">
+                       <div class="${b("wrapper")}">
+                            <div class="${b("image-wrapper")}">
                                 <img class="${b(
-                                  'image',
+                                  "image"
                                 )}" src="/images/react-big-img.png" alt="">
                             </div>
                             <div class="dotted-header">
@@ -44,8 +44,8 @@ class CourseCart extends Component {
                                   data.courseTech
                                 }</span>
                             </div>
-                            <div class="${b('header-wrapper')}">
-                                <h3 class="${b('header')}">${
+                            <div class="${b("header-wrapper")}">
+                                <h3 class="${b("header")}">${
         data.courseName
       }</h3>
                             </div>
@@ -73,4 +73,5 @@ class CourseCart extends Component {
     }
   }
 }
+
 export default CourseCart;

@@ -1,6 +1,6 @@
 $main-dark: #141618;
 $main-padding: 2rem;
-$whitish: hsla(0, 0%, 100%, .6);
+$whitish: hsla(0, 0%, 100%, 0.6);
 $main-grey: #141618;
 
 //stats_and_remainders
@@ -44,24 +44,24 @@ $main-grey: #141618;
     margin-right: 10px;
   }
   &__block-header {
-    letter-spacing: .1em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     padding-top: 20px;
-    color: hsla(0, 0%, 100%, .6);
-    font-size: .75rem;
+    color: hsla(0, 0%, 100%, 0.6);
+    font-size: 0.75rem;
   }
   &__count {
     font-size: 2.25rem;
   }
   &__rect-stat {
-    font-size: .75rem;
+    font-size: 0.75rem;
     width: 100%;
     color: #fff;
     border: none;
     background-color: #21252d;
     padding: 1rem 1rem;
-    color: hsla(0, 0%, 100%, .6);
-    letter-spacing: .1em;
+    color: hsla(0, 0%, 100%, 0.6);
+    letter-spacing: 0.1em;
     margin-top: 10px;
     display: flex;
     justify-content: space-between;

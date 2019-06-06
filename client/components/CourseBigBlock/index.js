@@ -1,3 +1,2 @@
 import "./main.scss";
-
-export {default} from "./CourseBigBlock"
+export { default } from "./CourseBigBlock";

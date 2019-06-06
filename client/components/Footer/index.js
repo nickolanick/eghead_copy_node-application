@@ -1,5 +1,4 @@
-import "./main.scss"
+import "./main.scss";
 import Footer from "./Footer";
-
 
 export default Footer;

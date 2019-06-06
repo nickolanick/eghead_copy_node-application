@@ -1,8 +1,7 @@
 import NavBar from "../components/NavBar/";
-import Login from "../auth/Login/";
+import Login from "../components/Login/";
 
-export const login_route = (app) => {
-    new NavBar(app);
-    new Login(app);
+export const login_route = app => {
+  new NavBar(app);
+  new Login(app);
 };
-

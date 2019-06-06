@@ -1,4 +1,3 @@
-import "./main.scss"
+import "./main.scss";
 
-
-export {default} from "./ListOfCarts";
+export { default } from "./ListOfCarts";
