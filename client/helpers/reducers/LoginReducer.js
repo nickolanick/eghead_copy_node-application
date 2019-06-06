@@ -1,17 +1,18 @@
 const UserLoginReducer = {
     userLoginStart(state, payload) {
-        state.allUsers.fetching = true;
+        state.loggedUser.fetching = true;
         return state;
     },
     userLoginSuccess(state, payload) {
-        state.allUsers.data = payload;
-        state.allUsers.fetching = false;
-        state.allUsers.fetched = true;
+        state.loggedUser.data = payload;
+        state.loggedUser.fetching = false;
+        state.loggedUser.fetched = true;
+        state.loggedUser.loggedIn = true;
         return state;
     },
     userLoginError(state, payload) {
-        state.allUsers.error = payload;
-        state.allUsers.fetching = false;
+        state.loggedUser.error = payload;
+        state.loggedUser.fetching = false;
         return state;
     },
 };

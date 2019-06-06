@@ -5,8 +5,9 @@ const faker = require('faker');
 
 const Course = require("./db").Course;
 const Lesson = require("./db").Lesson;
-const User = require("./db").User;
-console.log(faker.image.image(),"img");
+const User = require("./models/userModel").User;
+
+
 // const users = [];
 // for (let i = 0; i < 10; i++) {
 //     users.push(

@@ -1,6 +1,6 @@
 import {
     getAllUsersErrorAction, getAllUsersStartAction,
-    getAllUsersSuccessAction
+    getAllUsersSuccessAction, userLoginErrorAction, userLoginStartAction, userLoginSuccessAction
 } from "../reducers/reducerConstants";
 
 export const getAllUsers = (store) => {
@@ -15,9 +15,9 @@ export const getAllUsers = (store) => {
     }).catch(err => store.dispatch(getAllUsersErrorAction, err));
 };
 
-export const login = (store,data) => {
+export const login = (store, data) => {
     let endpoint = '/auth/login';
-    store.dispatch(, {});
+    store.dispatch(userLoginStartAction, {});
     fetch(endpoint, {
         method: 'post',
         headers: {
@@ -28,6 +28,6 @@ export const login = (store,data) => {
     }).then(function (response) {
         return response.json();
     }).then(function (data) {
-        store.dispatch(, data);
-    }).catch(err => store.dispatch(, err));
+        store.dispatch(userLoginSuccessAction, data);
+    }).catch(err => store.dispatch(userLoginErrorAction, err));
 };
