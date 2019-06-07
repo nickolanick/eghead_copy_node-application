@@ -1,10 +1,12 @@
 const faker = require('faker');
 
-const Course = require('../../db').Course;
-const Lesson = require('../../db').Lesson;
-const User = require('../../db').User;
 
+const Course = require('./db').Course;
+const Lesson = require('./db').Lesson;
+const User = require('./db').User;
 const users = [];
+
+
 for (let i = 0; i < 10; i++) {
   users.push({
     name: faker.name.findName(),
@@ -46,3 +48,4 @@ User.find({}, (err, user) => {
     }
   }
 });
+process.exit();

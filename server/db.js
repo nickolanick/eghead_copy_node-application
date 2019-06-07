@@ -1,7 +1,7 @@
-// const uri = "mongodb://mongo:27017/docker-node-mongo";
+const uri = "mongodb://mongo:27017/docker-node-mongo";
 const dotenv = require("dotenv");
 dotenv.config();
-const uri = `mongodb://${process.env.DB_HOST}:27017/${process.env.DB_NAME};`;
+// const uri = `mongodb://${process.env.DB_HOST}:27017/${process.env.DB_NAME};`;
 const mongoose = require("mongoose");
 mongoose.connect(uri);
 let db = mongoose.connection;
@@ -9,7 +9,7 @@ db.on("error", console.error.bind(console, "connection error"));
 db.once("open", () => {
   console.log("connected");
 });
-mongoose.set('useFindAndModify', false);
+
 let userSchema = mongoose.Schema({
   name: { type: String, required: true },
   password: { type: String, required: true },

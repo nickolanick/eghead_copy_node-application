@@ -7,7 +7,7 @@
     "dev": "webpack --watch",
     "populate": "node ./server/populate.js",
     "build": "webpack",
-    "start": "node ./server/server.js"
+    "start": "node ./server/populate.js;node ./server/server.js"
   },
   "keywords": [],
   "author": "",
