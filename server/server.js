@@ -11,6 +11,7 @@ const passport = require("./auth").passport;
 
 app.use(passport.initialize());
 app.use(express.static(path.resolve(__dirname, "../client/dist")));
+app.use(express.static(path.resolve(__dirname, "../client/new_dist")));
 app.use(express.static(path.resolve(__dirname, "../client/assets")));
 app.use(bodyParser.json());
 
