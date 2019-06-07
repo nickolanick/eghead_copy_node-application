@@ -26,7 +26,6 @@ export const getAllCourses = async store => {
     }
 };
 
-
 export const getAllLessons = async store => {
     try {
         let endpoint = "/api/lessons";
@@ -41,5 +40,28 @@ export const getAllLessons = async store => {
         store.dispatch(getAllLessonsSuccessAction, data);
     } catch (err) {
         store.dispatch(getAllLessonsErrorAction, err);
+    }
+};
+
+
+export const addCourse = async (data) => {
+    try {
+        let endpoint = "/api/courses";
+        const response = await fetch(endpoint, {
+            method: "post",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: "bearer " + get_token()
+            },
+            body: JSON.stringify(data)
+        });
+        const res = await response.json();
+        location.reload();
+
+    } catch (err) {
+        console.log(err);
+        // store.dispatch(getAllCoursesErrorAction, err);
+
     }
 };

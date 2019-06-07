@@ -3,6 +3,7 @@ import {decode_token, get_token} from "../../helpers/cookies";
 import Component from "../../helpers/lib/component";
 import store from "../../helpers/store";
 import {getUser} from "../../helpers/actions/auth";
+import {addCourse} from "../../helpers/actions/api";
 
 const b = bem("profile");
 const inp = bem("input-block");
@@ -37,8 +38,14 @@ export default class Profile extends Component {
 
     sendData() {
         let data = {};
-        [...this.container.getElementsByTagName("input")].map(item => data[item.name.toLowerCase()] = item.value);
-        getUser(store, decode_token()["id"], data);
+        [...this.container.getElementsByTagName("input")].map(item => data[item.name] = item.value);
+
+        if (this.tabId === 1) {
+            getUser(store, decode_token()["id"], data)
+        } else if (this.tabId === 3) {
+            console.log("req",data);
+            addCourse(data)
+        }
 
     }
 
@@ -91,9 +98,9 @@ export default class Profile extends Component {
 
         let dashboard = this.generateTab("DashBoard", []);
         let edit_course = this.generateTab("Add Course", [{
-            "label": "Course name",
-            "placeholder": ""
-        }, {"label": "Course description", "placeholder": ""}]);
+            "label": "courseName",
+            "placeholder": "webhooks..."
+        }, {"label": "courseTech", "placeholder": "javascript"}]);
         let edit_lesson = this.generateTab("Add Lesson", [{
             "label": "Lesson name",
             "placeholder": ""
@@ -103,11 +110,11 @@ export default class Profile extends Component {
             "placeholder": ""
         }, {"label": "Password confirmation", "placeholder": ""}, {"label": "Current password", "placeholder": ""}]);
         let edit_profile = this.generateTab("Edit Profile", [{
-            "label": "Name",
+            "label": "name",
             "placeholder": user_data.name
-        }, {"label": "Email", "placeholder": user_data.email}], true);
+        }, {"label": "email", "placeholder": user_data.email}], true);
         if (this.tabId === 0) {
-            return dashboard ;
+            return dashboard;
         } else if (this.tabId === 1) {
             return edit_profile
         } else if (this.tabId === 2) {

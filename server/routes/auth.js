@@ -3,6 +3,8 @@ const auth_router = express.Router();
 const jwt = require("jsonwebtoken");
 const passport = require('passport');
 const User = require("../db").User;
+
+
 auth_router.get("/users", passport.authenticate('jwt', (session = false)), async (req, res) => {
     try {
         let users = await User.find().exec();
@@ -31,7 +33,6 @@ auth_router.get("/users/:user_id", passport.authenticate('jwt', (session = false
 
 
 auth_router.post("/users/:user_id", passport.authenticate('jwt', (session = false)), async (req, res) => {
-
     try {
         if (req.params.user_id.toString() !== req.user["_id"].toString()) return res.status(500).send("You Can only update your profile");
         const {email, name} = req.body;
@@ -44,6 +45,8 @@ auth_router.post("/users/:user_id", passport.authenticate('jwt', (session = fals
         res.status(500).send(e)
     }
 });
+
+
 
 
 auth_router.post("/login", async (req, res) => {

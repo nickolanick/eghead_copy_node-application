@@ -14,6 +14,18 @@ api.get('/courses', passport.authenticate('jwt', (session = false)), async (req,
     },
 );
 
+api.post('/courses', passport.authenticate('jwt', (session = false)), async (req, res) => {
+        try {
+            req.body.author = req.user["_id"];
+            let course = new Course(req.body);
+            let result = await course.save();
+            res.send(result);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    },
+);
+
 
 api.get('/lessons', passport.authenticate('jwt', (session = false)), async (req, res) => {
     try {
@@ -24,4 +36,16 @@ api.get('/lessons', passport.authenticate('jwt', (session = false)), async (req,
     }
 });
 
+
+api.post('/lessons', passport.authenticate('jwt', (session = false)), async (req, res) => {
+        try {
+            req.body.author = req.user["_id"];
+            let lesson = new Lesson(req.body);
+            let result = await lesson.save();
+            res.send(result);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    },
+);
 module.exports = api;

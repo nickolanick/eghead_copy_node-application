@@ -30,7 +30,7 @@ class CourseCart extends Component {
       )[0];
       this.container.className =
         b() + (this.display_list ? ` ${b(["space_between_inline"])}` : "");
-      this.container.style.width = this.display_list ? "33.33%" : "100%";
+      this.container.style.width = this.display_list ? "25%" : "100%";
       this.container.innerHTML = `
             <div class="${b("shadow")}">
                        <div class="${b("wrapper")}">
