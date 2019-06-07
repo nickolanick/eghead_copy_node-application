@@ -1,7 +1,7 @@
-// const uri = "mongodb://mongo:27017/docker-node-mongo";
+const uri = "mongodb://mongo:27017/docker-node-mongo";
 const dotenv = require("dotenv");
 dotenv.config();
-const uri = `mongodb://${process.env.DB_HOST}:27017/${process.env.DB_NAME};`;
+// const uri = `mongodb://${process.env.DB_HOST}:27017/${process.env.DB_NAME};`;
 const mongoose = require("mongoose");
 
 mongoose.connect(uri);
