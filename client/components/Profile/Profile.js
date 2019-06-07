@@ -16,17 +16,18 @@ export default class Profile extends Component {
         app.appendChild(this.container);
         this.tabId = 1;
         this.render();
-        console.log(decode_token(), "decode_token");
-        // loggedUser
-        getUser(store, decode_token()["id"])
+        getUser(store, decode_token()["id"]);
+        this.sendData = this.sendData.bind(this);
     }
 
     handleTabClick(e, id) {
         let old = this.tabId;
         this.tabId = id;
         this.render();
+
         this.container.getElementsByClassName(b("choice-panel-item"))[old].className = b("choice-panel-item");
         this.container.getElementsByClassName(b("choice-panel-item"))[id].className += " " + b("choice-panel-item--active");
+
     }
 
     initListeners() {
@@ -34,150 +35,24 @@ export default class Profile extends Component {
 
     }
 
-    getCurrentTab() {
-        let user_data = store.state.loggedUser.data;
-        let edit_course = `
-        <div class="${b("tab")}">
+    sendData() {
+        let data = {};
+        [...this.container.getElementsByTagName("input")].map(item => data[item.name.toLowerCase()] = item.value);
+        getUser(store, decode_token()["id"], data);
+
+    }
+
+    generateTab(title, labels_placeholders, header = false) {
+        const tab = document.createElement("div");
+        tab.className = b("tab");
+        tab.innerHTML = `
                      <div class="${b("tab-header")}">
                          <span>
-                         Add Course
+                         ${title}
                          </span>
                     </div>
-                   
-                    <div class="${b("tab-fields")}">
-                            <div class="${inp()}">
-                                <label  class="${inp("label")}">Course name</label>
-                                <div class="${inp("input-wrapper")}">
-                                     <input  class="${inp("input")}" type="text" placeholder="">
-                                </div>
-                            </div>
-                            <div class="${inp()}">
-                                <label  class="${inp("label")}">Course Technology</label>
-                                <div class="${inp("input-wrapper")}">
-                                
-                                     <input  class="${inp("input")}" type="text" placeholder="">
-                                
-                                </div>
-                                
-                            </div>
-                            <div class="${inp()}" >
-                                <label  class="${inp("label")}">Course Description</label>
-                                <div class="${inp("input-wrapper")}">
-                                
-                                     <input  class="${inp("input")}" type="text" placeholder="">
-                                
-                                </div>
-                                
-                            </div>
-                    </div>
-                    <div class="${b("tab-footer")}">
-                        <button class="${b("tab-footer-button")}">
-                            Send Course 
-                        </button>
-                    </div>
-                </div>
-        `;
-        let edit_lesson = `
-        <div class="${b("tab")}">
-                     <div class="${b("tab-header")}">
-                         <span>
-                         Add Lesson
-                         </span>
-                    </div>
-                   
-                    <div class="${b("tab-fields")}">
-                            <div class="${inp()}">
-                                <label  class="${inp("label")}">Lesson name</label>
-                                <div class="${inp("input-wrapper")}">
-                                     <input  class="${inp("input")}" type="text" placeholder="">
-                                </div>
-                            </div>
-                            <div class="${inp()}">
-                                <label  class="${inp("label")}">Lesson Technology</label>
-                                <div class="${inp("input-wrapper")}">
-                                
-                                     <input  class="${inp("input")}" type="text" placeholder="">
-                                
-                                </div>
-                                
-                            </div>
-                            <div class="${inp()}" >
-                                <label  class="${inp("label")}">Lesson Description</label>
-                                <div class="${inp("input-wrapper")}">
-                                
-                                     <input  class="${inp("input")}" type="text" placeholder="">
-                                
-                                </div>
-                            </div>
-                            <div class="${inp()}" >
-                                <label  class="${inp("label")}">Course For Which Lesson</label>
-                                <div class="${inp("input-wrapper")}">
-                                
-                                     <input  class="${inp("input")}" type="text" placeholder="">
-                                
-                                </div>
-                            </div>
-                            
-                    </div>
-                    <div class="${b("tab-footer")}">
-                        <button class="${b("tab-footer-button")}">
-                            Send Lesson 
-                        </button>
-                    </div>
-                </div>
-        `;
-        let edit_password = `
-        <div class="${b("tab")}">
-                     <div class="${b("tab-header")}">
-                         <span>
-                         Edit Password
-                         </span>
-                    </div>
-                   
-                    <div class="${b("tab-fields")}">
-                            <div class="${inp()}">
-                                <label  class="${inp("label")}">Password</label>
-                                <div class="${inp("input-wrapper")}">
-                                     <input  class="${inp("input")}" type="text" placeholder="">
-                                </div>
-                            </div>
-                            <div class="${inp()}">
-                                <label  class="${inp("label")}">Password Confirmation</label>
-                                <div class="${inp("input-wrapper")}">
-                                
-                                     <input  class="${inp("input")}" type="text" placeholder="">
-                                
-                                </div>
-                                
-                            </div>
-                            <div class="${inp()}" >
-                                <label  class="${inp("label")}">Current Password</label>
-                                <div class="${inp("input-wrapper")}">
-                                
-                                     <input  class="${inp("input")}" type="text" placeholder="">
-                                
-                                </div>
-                                
-                            </div>
-                    </div>
-                    <div class="${b("tab-footer")}">
-                        <button class="${b("tab-footer-button")}">
-                            Send Course 
-                        </button>
-                        <button class="${b("tab-footer-button")}">
-                            Delete Account
-                        </button>
-                    </div>
-                </div>
-        `;
-        let edit_profile = `
-        <div class="${b("tab")}">
-                     <div class="${b("tab-header")}">
-                         <span>
-                         Edit Profile
-                         </span>
-                    </div>
-                    <div class="${b("tab-icon-modification")}">
+                    ${header ?
+            `<div class="${b("tab-icon-modification")}">
                         <img src="/images/headhock.png" class="${b("tab-avatar")}" alt="avatar">
                         <div class="${b("tab-load-file-wrapper")}">
                                <button>
@@ -185,49 +60,54 @@ export default class Profile extends Component {
                                 </button>
                                 <span>We support Gravatar too</span>
                         </div>
-                    </div>
+                    </div>` : ""}
                     <div class="${b("tab-fields")}">
-                            <div class="${inp()}">
-                                <label  class="${inp("label")}">First Name</label>
-                                <div class="${inp("input-wrapper")}">
-                                
-                                     <input  class="${inp("input")}" type="text" placeholder="${user_data.name}">
-                                
-                                </div>
-                                
-                            </div>
-                            <div class="${inp()}">
-                                <label  class="${inp("label")}">Last Name</label>
-                                <div class="${inp("input-wrapper")}">
-                                
-                                     <input  class="${inp("input")}" type="text" placeholder="${user_data.name}">
-                                
-                                </div>
-                                
-                            </div>
-                            <div class="${inp()}" >
-                                <label  class="${inp("label")}">Email</label>
-                                <div class="${inp("input-wrapper")}">
-                                
-                                     <input  class="${inp("input")}" type="text" placeholder="${user_data.email}">
-                                
-                                </div>
-                                
-                            </div>
+                    
+                    ${labels_placeholders.map(item => `<div class="${inp()}">
+                                                            <label  class="${inp("label")}">${item.label}</label>
+                                                            <div class="${inp("input-wrapper")}">
+                                                                 <input  class="${inp("input")}"  name=${item.label} type="text" placeholder="${item.placeholder}">
+                                                            </div>
+                                                        </div>`).join("")}
                     </div>
                     <div class="${b("tab-footer")}">
-                        <button class="${b("tab-footer-button")}">
-                            Save Changes 
-                        </button>
-                        <button class="${b("tab-footer-button")}">
-                            Delete Account
-                        </button>
                     </div>
-                </div>
-        `;
 
+        `
+        ;
+
+        let tabFooter = tab.getElementsByClassName(b("tab-footer"))[0];
+        let button = document.createElement("button");
+        button.className = b("tab-footer-button");
+        button.innerHTML = 'Send Data';
+        button.addEventListener("click", this.sendData);
+        tabFooter.appendChild(button);
+        return tab;
+
+    }
+
+    getCurrentTab() {
+        let user_data = store.state.loggedUser.data;
+
+        let dashboard = this.generateTab("DashBoard", []);
+        let edit_course = this.generateTab("Add Course", [{
+            "label": "Course name",
+            "placeholder": ""
+        }, {"label": "Course description", "placeholder": ""}]);
+        let edit_lesson = this.generateTab("Add Lesson", [{
+            "label": "Lesson name",
+            "placeholder": ""
+        }, {"label": "Lesson description", "placeholder": ""}]);
+        let edit_password = this.generateTab("Edit Password", [{
+            "label": "password",
+            "placeholder": ""
+        }, {"label": "Password confirmation", "placeholder": ""}, {"label": "Current password", "placeholder": ""}]);
+        let edit_profile = this.generateTab("Edit Profile", [{
+            "label": "Name",
+            "placeholder": user_data.name
+        }, {"label": "Email", "placeholder": user_data.email}], true);
         if (this.tabId === 0) {
-            return "dashboard";
+            return dashboard ;
         } else if (this.tabId === 1) {
             return edit_profile
         } else if (this.tabId === 2) {
@@ -237,7 +117,7 @@ export default class Profile extends Component {
         } else if (this.tabId === 4) {
             return edit_lesson;
         } else {
-            return "other"
+            return dashboard
         }
     }
 
@@ -247,6 +127,7 @@ export default class Profile extends Component {
         if (store.state.loggedUser.fetched) {
             let user_data = store.state.loggedUser.data;
             this.container.innerHTML += `
+                </div>
             <div class="${b("wrapper")}">
             <div class="${b("greetings")}">
                   <h3 class="${b("greetings-content")}">Hi, <b>${user_data.name}</b>! Here is your account information.</h3>
@@ -266,7 +147,7 @@ export default class Profile extends Component {
                     </div>
                         <div class="${b("choice-panel-item")}">
                                <span class="${b("choice-panel-item-content")}">
-                               Edit Profile
+                               Edit Password
                                </span>
                         </div>
                         <div class="${b("choice-panel-item")}">
@@ -278,12 +159,16 @@ export default class Profile extends Component {
                     </div>
                 </aside>
                 
-                ${this.getCurrentTab()}
+                
            
             </div>        
         </div>
     `;
+
+
+            this.container.getElementsByClassName(b("content"))[0].appendChild(this.getCurrentTab());
             this.container.getElementsByClassName(b("choice-panel-item"))[this.tabId].className += " " + b("choice-panel-item--active");
+
             this.initListeners();
         }
 

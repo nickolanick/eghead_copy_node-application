@@ -14,6 +14,7 @@ api.get('/courses', passport.authenticate('jwt', (session = false)), async (req,
     },
 );
 
+
 api.get('/lessons', passport.authenticate('jwt', (session = false)), async (req, res) => {
     try {
         let data = await Lesson.find().exec();

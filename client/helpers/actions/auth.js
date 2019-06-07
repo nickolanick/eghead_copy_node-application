@@ -1,6 +1,7 @@
 import {
     getAllCoursesErrorAction,
-    getAllCoursesStartAction, getAllCoursesSuccessAction,
+    getAllCoursesStartAction,
+    getAllCoursesSuccessAction,
     getAllUsersErrorAction,
     getAllUsersStartAction,
     getAllUsersSuccessAction,
@@ -70,19 +71,29 @@ export const registrate = (store, data) => {
 };
 
 
-export const getUser = async (store, user_id) => {
+export const getUser = async (store, user_id, post_data = false) => {
     try {
         let endpoint = "/auth/users/" + user_id;
-        console.log(endpoint,"endp");
         store.dispatch(userLoginStartAction, {});
-
+        const method = post_data?"post":"get";
+        const body = post_data?JSON.stringify(post_data):null;
         const response = await fetch(endpoint, {
-            method: "get",
-            headers: {Authorization: "bearer " + get_token()}
+            method:  method,
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: "bearer " + get_token()},
+            body:body
         });
+        // const response = await fetch(endpoint, {
+        //     method:  "get",
+        //     headers: {
+        //         Authorization: "bearer " + get_token()},
+        // });
         const data = await response.json();
         store.dispatch(userLoginSuccessAction, data);
     } catch (err) {
         store.dispatch(userLoginErrorAction, err);
     }
+
 };

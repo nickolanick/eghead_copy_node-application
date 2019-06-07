@@ -1,21 +1,29 @@
 import bem from "../../helpers/bem";
-import { get_token } from "../../helpers/cookies";
+import {decode_token, get_token} from "../../helpers/cookies";
+import Component from "../../helpers/lib/component";
+import store from "../../helpers/store";
+import {getUser} from "../../helpers/actions/auth";
 
 const b = bem("nav-bar");
-export default class NavBar {
+export default class NavBar extends Component {
   constructor(app) {
+      super({
+          store
+      });
     this.container = document.createElement("nav");
     this.container.className = `${b()}`;
     app.appendChild(this.container);
+    this.logged = get_token();
+    this.logged ? getUser(store, decode_token()["id"]):null;
     this.render();
   }
 
   static getProfile() {
-    const logged = get_token();
-    return logged
+
+    return store.state.loggedUser.fetched
       ? `<button class="${b("feadback-button")}">Feedback</button>
             <a class="${b("profile")}" href="/profile" >
-            <span>Mykhailo</span>
+            <span>${store.state.loggedUser.data.name}</span>
             <img class="${b(
               "profile-avatar"
             )}" src="/images/headhock.png" alt="avatar">
