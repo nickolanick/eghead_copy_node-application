@@ -9,7 +9,7 @@ db.on("error", console.error.bind(console, "connection error"));
 db.once("open", () => {
   console.log("connected");
 });
-
+mongoose.set('useFindAndModify', false);
 let userSchema = mongoose.Schema({
   name: { type: String, required: true },
   password: { type: String, required: true },

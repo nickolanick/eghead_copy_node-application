@@ -14,12 +14,12 @@ export default class NavBar {
     const logged = get_token();
     return logged
       ? `<button class="${b("feadback-button")}">Feedback</button>
-            <button class="${b("profile")}">
+            <a class="${b("profile")}" href="/profile" >
             <span>Mykhailo</span>
             <img class="${b(
               "profile-avatar"
             )}" src="/images/headhock.png" alt="avatar">
-            </button>`
+            </a>`
       : `<a  class="${b("login-link")}" href="/login">login</a>`;
   }
 
@@ -31,9 +31,9 @@ export default class NavBar {
         )} website-layout-width website-layout-position">
                <div class="${b("padding-wrapper")}">
                 <div class="${b("headers")}">
-                <img src="/images/logo.svg" class="${b(
+                <a href="/"><img src="/images/logo.svg" class="${b(
                   "headers-logo"
-                )}" alt="Egghead logo">
+                )}" alt="Egghead logo"></a>
         
                 <div class="${b("headers-content")}">
                     <img src="/images/play_button.svg" alt="">
