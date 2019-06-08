@@ -43,7 +43,6 @@ class Login extends Component {
 
     render() {
         store.state.loggedUser.loggedIn ? this.onSuccessRegistration() : null;
-
         this.container.innerHTML = `
         <section class="log-in">
             <div>

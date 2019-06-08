@@ -46,6 +46,12 @@ $main-grey: #141618;
     border: none;
     margin-left: 20px;
     background-color: transparent;
+    &-user{
+      white-space: nowrap;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   &__feadback-button:hover {
     background: rgb(35, 44, 59);
@@ -98,6 +104,10 @@ $main-grey: #141618;
     align-items: center;
     &-logo {
       margin-right: 25px;
+      &-small{
+        margin-right: 10px;
+        display: none;
+      }
     }
     &-content {
       padding-left: 0.5rem;
@@ -127,3 +137,9 @@ $main-grey: #141618;
     align-items: center;
   }
 }
+
+
+
+//@media  {
+//
+//}

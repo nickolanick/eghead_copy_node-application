@@ -39,17 +39,23 @@ body {
   &__list {
   }
   &__list-item-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.6);
   }
 
   &__list-item-time {
     font-size: 12px;
+    width: 40px;
     color: rgba(0, 0, 0, 0.6);
     opacity: 0.6;
   }
   &__list-item {
     display: flex;
+    word-break: break-all;
+    align-items: center;
     justify-content: space-between;
     color: rgba(0, 0, 0, 0.6);
     padding: 1rem 1rem 1rem 2rem;
@@ -67,7 +73,10 @@ body {
   justify-content: center;
   color: $main-grey;
   opacity: 0.6;
+  align-items: center;
+  word-break: break-all;
   font-weight: 400;
+  padding: 0 20px;
   font-size: 13px;
   display: flex;
   text-transform: uppercase;
@@ -83,26 +92,35 @@ body {
 .mini-profile {
   align-items: center;
   background-color: #fff;
-
+  word-break: break-all;
   display: flex;
   justify-content: space-between;
   padding: 1rem 1rem 15px;
   &__content-wrapper {
-    justify-content: center;
     align-items: center;
     display: flex;
+    overflow: hidden;
+    flex:1;
   }
   &__content {
     padding-left: 0.5rem;
     display: flex;
+    overflow: hidden;
     justify-content: space-between;
     flex-direction: column;
     &-header {
+      flex: 1;
+      overflow: hidden;
       font-size: 15px;
       font-weight: 400;
       opacity: 0.7;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     &-sub_header {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       font-weight: 400;
       font-size: 12px;
       color: rgba(0, 0, 0, 0.6);

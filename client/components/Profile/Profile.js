@@ -25,7 +25,6 @@ export default class Profile extends Component {
         let old = this.tabId;
         this.tabId = id;
         this.render();
-
         this.container.getElementsByClassName(b("choice-panel-item"))[old].className = b("choice-panel-item");
         this.container.getElementsByClassName(b("choice-panel-item"))[id].className += " " + b("choice-panel-item--active");
 
@@ -33,7 +32,6 @@ export default class Profile extends Component {
 
     initListeners() {
         [...this.container.getElementsByClassName(b("choice-panel-item"))].map((item, id) => item.addEventListener("click", (e) => this.handleTabClick(e, id)));
-
     }
 
     sendData() {
@@ -43,9 +41,11 @@ export default class Profile extends Component {
         if (this.tabId === 1) {
             getUser(store, decode_token()["id"], data)
         } else if (this.tabId === 3) {
-            console.log("req",data);
             addCourse(data)
+        } else if (this.tabId === 4) {
+            addLesson(data)
         }
+
 
     }
 
@@ -73,7 +73,7 @@ export default class Profile extends Component {
                     ${labels_placeholders.map(item => `<div class="${inp()}">
                                                             <label  class="${inp("label")}">${item.label}</label>
                                                             <div class="${inp("input-wrapper")}">
-                                                                 <input  class="${inp("input")}"  name=${item.label} type="text" placeholder="${item.placeholder}">
+                                                                 <input  class="${inp("input")}"  name=${item.label} type="text"  value="${item.value ? item.value : ""}" placeholder="${item.placeholder ? item.placeholder : ""}">
                                                             </div>
                                                         </div>`).join("")}
                     </div>
@@ -97,22 +97,22 @@ export default class Profile extends Component {
         let user_data = store.state.loggedUser.data;
 
         let dashboard = this.generateTab("DashBoard", []);
-        let edit_course = this.generateTab("Add Course", [{
-            "label": "courseName",
-            "placeholder": "webhooks..."
-        }, {"label": "courseTech", "placeholder": "javascript"}]);
-        let edit_lesson = this.generateTab("Add Lesson", [{
-            "label": "Lesson name",
-            "placeholder": ""
-        }, {"label": "Lesson description", "placeholder": ""}]);
-        let edit_password = this.generateTab("Edit Password", [{
-            "label": "password",
-            "placeholder": ""
-        }, {"label": "Password confirmation", "placeholder": ""}, {"label": "Current password", "placeholder": ""}]);
-        let edit_profile = this.generateTab("Edit Profile", [{
-            "label": "name",
-            "placeholder": user_data.name
-        }, {"label": "email", "placeholder": user_data.email}], true);
+        let edit_course = this.generateTab("Add Course", [
+            {"label": "courseName", "placeholder": "Learning async js ..."},
+            {"label": "courseTech", "placeholder": "javascript ..."}
+        ]);
+        let edit_lesson = this.generateTab("Add Lesson", [
+            {"label": "name", "placeholder": "Best Course in the world ..."},
+            {"label": "time", "placeholder": "4:30 ..."},
+            {"label": "video", "placeholder": "https://www.youtube.com/watch?v=bestVideo"}]);
+        let edit_password = this.generateTab("Edit Password", [
+            {"label": "password", "placeholder": ""},
+            {"label": "Password confirmation", "placeholder": ""},
+            {"label": "Current password", "placeholder": ""}]);
+        let edit_profile = this.generateTab("Edit Profile", [
+            {"label": "name", "value": user_data.name},
+            {"label": "email", "value": user_data.email}
+        ], true);
         if (this.tabId === 0) {
             return dashboard;
         } else if (this.tabId === 1) {
@@ -123,8 +123,6 @@ export default class Profile extends Component {
             return edit_course;
         } else if (this.tabId === 4) {
             return edit_lesson;
-        } else {
-            return dashboard
         }
     }
 
@@ -171,11 +169,8 @@ export default class Profile extends Component {
             </div>        
         </div>
     `;
-
-
             this.container.getElementsByClassName(b("content"))[0].appendChild(this.getCurrentTab());
             this.container.getElementsByClassName(b("choice-panel-item"))[this.tabId].className += " " + b("choice-panel-item--active");
-
             this.initListeners();
         }
 

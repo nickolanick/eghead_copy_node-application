@@ -1,4 +1,3 @@
-import "./css/main.scss";
 import {
   home_url,
   login_url,
@@ -11,6 +10,8 @@ import { registration_route } from "./routes/registration";
 import { login_route } from "./routes/login";
 import { get_token } from "./helpers/cookies";
 import { profile_route } from "./routes/profile";
+import "./css/main.scss";
+import "./css/media.scss"
 
 let app = document.getElementById("root");
 const path_current = window.location.pathname;

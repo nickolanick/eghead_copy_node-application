@@ -35,23 +35,16 @@ class CourseCart extends Component {
             <div class="${b("shadow")}">
                        <div class="${b("wrapper")}">
                             <div class="${b("image-wrapper")}">
-                                <img class="${b(
-                                  "image"
-                                )}" src="/images/react-big-img.png" alt="">
+                                <img class="${b("image")}" src="/images/react-big-img.png" alt="">
                             </div>
                             <div class="dotted-header">
-                                <span>COURSE </span><span class="dotted-header__dot">•</span><span>${
-                                  data.courseTech
-                                }</span>
+                                <span>COURSE </span><span class="dotted-header__dot">•</span><span>${data.courseTech}</span>
                             </div>
                             <div class="${b("header-wrapper")}">
-                                <h3 class="${b("header")}">${
-        data.courseName
-      }</h3>
+                                <h3 class="${b("header")}">${data.courseName}</h3>
                             </div>
                         </div>
-                        <div>
-                            <div class="mini-profile">
+                       <div class="mini-profile">
                                 <div class="mini-profile__content-wrapper">
                                     <img class="icon icon--small" src="/images/ari-avatar.jpg" alt="">
                                     <div class="mini-profile__content">
@@ -62,13 +55,12 @@ class CourseCart extends Component {
                                           data.lessons.length
                                         } lessons . 41m</span>
                                     </div>
-                            </div>
-                        <div>
-                <img src="/images/profileMiniFolder.svg" alt="profileMiniFolder">
-                </div>
-            </div>
-            </div>
-        </div>
+                                </div>
+                                <img src="/images/profileMiniFolder.svg" alt="profileMiniFolder">
+                                
+                        </div>
+            
+             </div>
                 `;
     }
   }

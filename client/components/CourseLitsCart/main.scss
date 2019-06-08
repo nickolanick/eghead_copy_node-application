@@ -13,22 +13,30 @@
   &__icon-text-share {
     color: rgba(0, 0, 0, 0.7);
     font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
   }
 
   &__text-share-content {
-    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 10px ;
   }
   &__description {
     display: flex;
     align-items: center;
+    padding: 2rem 0;
   }
   &__time_script {
     padding-right: 30px;
+    width: 100px;
   }
   &__title-author {
     padding-left: 2rem;
   }
   &__header {
+    word-break: break-all;
     font-size: 1.25rem;
     font-weight: 500;
   }
@@ -40,9 +48,10 @@
 
 .profile-minimal {
   display: flex;
-  align-items: baseline;
+  align-items: center;
 
   &__author {
+
     font-size: 15px;
     transition: color 0.15s;
     color: rgba(0, 0, 0, 0.7);

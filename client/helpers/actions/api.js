@@ -65,3 +65,25 @@ export const addCourse = async (data) => {
 
     }
 };
+
+export const addLesson= async (data) => {
+    try {
+        let endpoint = "/api/lessons";
+        const response = await fetch(endpoint, {
+            method: "post",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: "bearer " + get_token()
+            },
+            body: JSON.stringify(data)
+        });
+        const res = await response.json();
+        location.reload();
+
+    } catch (err) {
+        console.log(err);
+        // store.dispatch(getAllCoursesErrorAction, err);
+
+    }
+};
