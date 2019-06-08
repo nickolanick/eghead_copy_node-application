@@ -22,7 +22,6 @@ class CourseBigBlock extends Component {
             <div class="course-content-regular__list-item-time">04:24</div>
         </li>`;
   }
-
   render() {
     this.container.className = "course-big-block__wrapper flex-join";
     this.container.innerHTML = ``;

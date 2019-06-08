@@ -3,7 +3,7 @@ import {decode_token, get_token} from "../../helpers/cookies";
 import Component from "../../helpers/lib/component";
 import store from "../../helpers/store";
 import {getUser} from "../../helpers/actions/auth";
-import {addCourse} from "../../helpers/actions/api";
+import {addCourse, addLesson} from "../../helpers/actions/api";
 
 const b = bem("profile");
 const inp = bem("input-block");
