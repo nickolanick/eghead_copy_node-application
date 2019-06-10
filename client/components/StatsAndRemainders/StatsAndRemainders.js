@@ -3,39 +3,39 @@ import bem from "../../helpers/bem";
 import Component from "../../helpers/lib/component";
 import store from "../../helpers/store/index.js";
 import CourseBigBlock from "../CourseBigBlock/CourseBigBlock";
-import { getAllCourses, getAllLessons } from "../../helpers/actions/api";
-import { CheckAction } from "../../helpers/CheckAction";
-import { getAllUsers } from "../../helpers/actions/auth";
+import {getAllCourses, getAllLessons} from "../../helpers/actions/api";
+import {CheckAction} from "../../helpers/CheckAction";
+import {getAllUsers} from "../../helpers/actions/auth";
 
 const b = bem("stats_and_remainders");
 
 export default class StatsAndRemainders extends Component {
-  constructor(app) {
-    let container = document.createElement("section");
-    super({
-      store
-    });
-    this.container = container;
-    this.container.className = b();
-    app.appendChild(this.container);
-    StatsAndRemainders.dispatchAll();
-  }
+    constructor(app) {
+        let container = document.createElement("section");
+        super({
+            store
+        });
+        this.container = container;
+        this.container.className = b();
+        app.appendChild(this.container);
+        StatsAndRemainders.dispatchAll();
+    }
 
-  static dispatchAll() {
-    CheckAction(store.state.allCourses, getAllCourses, store);
-    CheckAction(store.state.allLessons, getAllLessons, store);
-    CheckAction(store.state.allUsers, getAllUsers, store);
-  }
+    static dispatchAll() {
+        CheckAction(store.state.allCourses, getAllCourses, store);
+        CheckAction(store.state.allLessons, getAllLessons, store);
+        CheckAction(store.state.allUsers, getAllUsers, store);
+    }
 
-  render() {
-    let lessons = store.state.allLessons;
-    let data = store.state.allCourses;
-    this.container.innerHTML = "";
-    if (data.fetched && lessons.fetched) {
-      data = data.data[0];
-      this.container.innerHTML += `<div class="${b(
-        "wrapper"
-      )} flex-join website-layout-width website-layout-position">
+    render() {
+        let lessons = store.state.allLessons;
+        let data = store.state.allCourses;
+        this.container.innerHTML = "";
+        if (data.fetched && lessons.fetched) {
+            data = data.data[0];
+            this.container.innerHTML += `<div class="${b(
+                "wrapper"
+            )} flex-join website-layout-width website-layout-position">
                     <div class="course-big-block">
                     <span class="${b("header")}">
                     CONTINUE WATCHING
@@ -74,10 +74,10 @@ export default class StatsAndRemainders extends Component {
             </div>
         </div>
         `;
-      const father = this.container.getElementsByClassName(
-        "course-big-block"
-      )[0];
-      new CourseBigBlock(father, data);
+            const father = this.container.getElementsByClassName(
+                "course-big-block"
+            )[0];
+            new CourseBigBlock(father, data);
+        }
     }
-  }
 }

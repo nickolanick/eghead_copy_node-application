@@ -1,49 +1,65 @@
 import bem from "../../helpers/bem";
 
-const b = bem("nav-bar");
+const b = bem("footer");
 const Footer = () => {
-  const footer = document.createElement("footer");
-  footer.className = `${b()}`;
+    const footer = document.createElement("footer");
+    footer.className = `${b()}`;
 
-  footer.innerHTML = `
-    <footer class="footer">
-        <div class="footer-block">
-            <span class="footer-block__logo">
-                <img src="/images/logo.svg" alt="">
-            </span>
-            <div class="footer-block__content">
-                <div class="footer-block__content-list">
-                    <div class="footer-block__content-list-block">
-                        <h2 class="footer-block__content-list-header">content</h2>
-                        <ul class="footer-block__content-list-ulist">
-                            <li>Browse</li>
-                            <li>Courses</li>
-                            <li>Lessons</li>
-                            <li>Podcasts</li>
-                        </ul>
-                    </div>
-                    <div class="footer-block__content-list-block">
-                        <h2 class="footer-block__content-list-header">about</h2>
-                        <ul class="footer-block__content-list-ulist">
-                            <li>Pricing</li>
-                            <li>Instructors</li>
-                            <li>Stories</li>
-                            <li>Team</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-block__content-search">
-                </div>
+    footer.innerHTML = `
+
+        <div class="${b("wrapper")}">
+            <div class="${b("logo-wrapper")}">
+                <img class="${b("logo")}" src="/images/logo.svg"  alt="">
             </div>
-            <div class="footer-block__terms">
-                <ul class="footer-block__terms-list">
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li>© egghead.io</li>
-                </ul>
+            <div class="${b("content")}">
+                <div class="${b("content-search-wrap")}">
+                    <h2 class="${b("content-search-title")}">Search for Lessons and Courses</h2>
+                    <div class="${b("content-search")}">
+                        <input class="${b("content-search-input")}" placeholder="e.g JavaScript, React" type="text">
+                        <button class="${b("content-search-button")}">
+                            <img src="/images/search_icon.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+                
+                
+                <div class="${b("content-information-wrap")}">
+                    <div class="${b("content-ul-wrapper")}">
+                        <h2 class="${b("content-ul-title")}">
+                            Content
+                        </h2>
+                        <ul class="${b("content-ul")}">
+                            <li class="${b("content-list-item")}">Browse</li>
+                            <li class="${b("content-list-item")}">Courses</li>
+                            <li class="${b("content-list-item")}">Lessons</li>
+                            <li class="${b("content-list-item")}">Podcasts</li>
+                        </ul>
+                    </div>
+                    <div class="${b("content-ul-wrapper")}">
+                        <h2 class="${b("content-ul-title")}">
+                            About
+                        </h2>
+                        <ul class="${b("content-ul")}">
+                            <li class="${b("content-list-item")}">Pricing</li>
+                            <li class="${b("content-list-item")}">Instructors</li>
+                            <li class="${b("content-list-item")}">Stories</li>
+                            <li class="${b("content-list-item")}">Team</li>
+                        </ul>
+                    </div>
+                
+                </div>
+                
+                
+            </div>
+            
+            <div class="${b("extra-info")}">
+                <ul class="${b("extra-info-ul")}">
+                    <li class="${b("extra-info-li")}">Terms & Conditions</li>
+                    <li class="${b("extra-info-li")}">© egghead.io</li>
+                </ul>            
             </div>
         </div>
-    </footer>
 `;
-  return footer;
+    return footer;
 };
 export default Footer;

@@ -4,7 +4,7 @@ const Lesson = require('../db').Lesson;
 const passport = require('passport');
 const api = express.Router();
 
-api.get('/courses', passport.authenticate('jwt', (session = false)), async (req, res) => {
+api.get('/courses', passport.authenticate('jwt', (session = false),), async (req, res) => {
         try {
             let data = await Course.find().exec();
             res.send(data)

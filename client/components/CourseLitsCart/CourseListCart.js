@@ -14,6 +14,7 @@ const CourseListsCart = data => {
             <div class="${b("title-author")}">
                 <h1 class="${b("header")}">${data.name}</h1>
                     <div class="profile-minimal">
+                    <img class="profile-minimal__icon" src="/images/headhock.png" alt="">
                         <a class="profile-minimal__author">Alan Show</a> 
                         <span class="profile-minimal__extra">LESSON</span>
                    </div>

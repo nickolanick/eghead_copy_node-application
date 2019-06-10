@@ -3,6 +3,9 @@
   margin-bottom: 1rem;
   border-radius: 0.25rem;
   background-color: #fff;
+  &__heading{
+    color: #fff;
+  }
   &__wrapper {
     min-height: 100px;
     display: flex;
@@ -50,6 +53,7 @@
   display: flex;
   align-items: center;
 
+  padding-top: 10px;
   &__author {
 
     font-size: 15px;
@@ -57,6 +61,12 @@
     color: rgba(0, 0, 0, 0.7);
     text-transform: capitalize;
     cursor: pointer;
+  }
+  &__icon{
+    width: 24px;
+    height: 24px;
+    border-radius: 9999px;
+    padding-right: 10px;
   }
   &__extra {
     padding-left: 1rem;

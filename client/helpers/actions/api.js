@@ -7,7 +7,7 @@ import {
     getAllLessonsStartAction,
     getAllLessonsSuccessAction
 } from "../reducers/reducerConstants";
-import {get_token} from "../cookies";
+import {get_token, remove_token} from "../cookies";
 
 export const getAllCourses = async store => {
     try {
@@ -18,10 +18,12 @@ export const getAllCourses = async store => {
             method: "get",
             headers: {Authorization: "bearer " + get_token()}
         });
+        response.status >= 400 ? remove_token() : null;
         const data = await response.json();
 
         store.dispatch(getAllCoursesSuccessAction, data);
     } catch (err) {
+        console.log(err);
         store.dispatch(getAllCoursesErrorAction, err);
     }
 };
@@ -35,6 +37,7 @@ export const getAllLessons = async store => {
             method: "get",
             headers: {Authorization: "bearer " + get_token()}
         });
+        response.status >= 400 ? remove_token() : null;
         const data = await response.json();
 
         store.dispatch(getAllLessonsSuccessAction, data);
@@ -56,6 +59,7 @@ export const addCourse = async (data) => {
             },
             body: JSON.stringify(data)
         });
+        response.status >= 400 ? remove_token() : null;
         const res = await response.json();
         location.reload();
 
@@ -66,7 +70,7 @@ export const addCourse = async (data) => {
     }
 };
 
-export const addLesson= async (data) => {
+export const addLesson = async (data) => {
     try {
         let endpoint = "/api/lessons";
         const response = await fetch(endpoint, {
@@ -78,6 +82,7 @@ export const addLesson= async (data) => {
             },
             body: JSON.stringify(data)
         });
+        response.status >= 400 ? remove_token() : null;
         const res = await response.json();
         location.reload();
 

@@ -15,7 +15,7 @@ export default class Profile extends Component {
         this.container = document.createElement("div");
         this.container.className = `${b()}`;
         app.appendChild(this.container);
-        this.tabId = 1;
+        this.tabId = 0;
         this.render();
         getUser(store, decode_token()["id"]);
         this.sendData = this.sendData.bind(this);
@@ -38,11 +38,11 @@ export default class Profile extends Component {
         let data = {};
         [...this.container.getElementsByTagName("input")].map(item => data[item.name] = item.value);
 
-        if (this.tabId === 1) {
+        if (this.tabId === 0) {
             getUser(store, decode_token()["id"], data)
-        } else if (this.tabId === 3) {
+        } else if (this.tabId === 2) {
             addCourse(data)
-        } else if (this.tabId === 4) {
+        } else if (this.tabId ===3) {
             addLesson(data)
         }
 
@@ -114,14 +114,12 @@ export default class Profile extends Component {
             {"label": "email", "value": user_data.email}
         ], true);
         if (this.tabId === 0) {
-            return dashboard;
-        } else if (this.tabId === 1) {
             return edit_profile
-        } else if (this.tabId === 2) {
+        } else if (this.tabId === 1) {
             return edit_password
-        } else if (this.tabId === 3) {
+        } else if (this.tabId === 2) {
             return edit_course;
-        } else if (this.tabId === 4) {
+        } else if (this.tabId === 3) {
             return edit_lesson;
         }
     }
@@ -140,11 +138,6 @@ export default class Profile extends Component {
             <div class="${b("content")}">
                 <aside class="${b("choice-panel")}">
                     <div class="${b("choice-panel-wrapper")}"> 
-                        <div class="${b("choice-panel-item")}">
-                               <span class="${b("choice-panel-item-content")}">
-                               Dashboard
-                                </span>
-                        </div>
                         <div class="${b("choice-panel-item")}">
                            <span class="${b("choice-panel-item-content")}">
                            Edit Profile

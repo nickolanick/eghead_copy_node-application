@@ -11,7 +11,7 @@ $main-grey: #141618;
 
 body {
   font-family: BlinkMacSystemFont, avenir next, avenir, helvetica neue,
-    helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
 
 .website-layout-width {
@@ -36,14 +36,30 @@ body {
   overflow: scroll;
   border-left: 1px solid #f4f7f9;
   height: 500px;
+
   &__list {
   }
+
   &__list-item-title {
     overflow: hidden;
     text-overflow: ellipsis;
     flex: 1;
     font-size: 14px;
+    padding-left: 10px;
     color: rgba(0, 0, 0, 0.6);
+  }
+
+  &__list-item-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__list-item-wrapper {
+    display: flex;
+    flex: 1;
+    padding-right: 10px;
+
+    align-items: center;
   }
 
   &__list-item-time {
@@ -52,6 +68,7 @@ body {
     color: rgba(0, 0, 0, 0.6);
     opacity: 0.6;
   }
+
   &__list-item {
     display: flex;
     word-break: break-all;
@@ -61,8 +78,45 @@ body {
     padding: 1rem 1rem 1rem 2rem;
     cursor: pointer;
     font-size: 0.875rem;
+    position: relative;
     list-style-type: none;
   }
+
+  &__list-item:hover {
+
+    &:after {
+      border-radius: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 0 5px 7px;
+      border-color: transparent transparent transparent #409b6b;
+      background: #fafafa;
+      box-shadow: 0 0 0 3px #fafafa;
+    }
+  }
+
+  &__list-item:before {
+    content: '';
+    height: 100%;
+    left: 14px;
+    position: absolute;
+    border-radius: 0;
+    background-color: #409b6b;
+    width: 1px;
+  }
+
+  &__list-item:after {
+    content: '';
+    transition: .15s;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    position: absolute;
+    left: 10px;
+    background-color: #409b6b;
+  }
+
   &__list-item:hover {
     background-color: #f4f7f9;
   }
@@ -95,19 +149,50 @@ body {
   word-break: break-all;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1rem 15px;
+  position: relative;
+  flex-direction: column;
+
+  &__course-progress {
+    background-color: rgb(226, 227, 231);
+    height: 5px;
+    width: 100%;
+
+    display: none;
+
+    &--active {
+      display: block;
+    }
+
+    &-progresed {
+
+      background-color: rgb(99, 118, 141);
+      height: 5px;
+      width: 20%;
+
+    }
+  }
+
+  &__wrapper {
+    padding: 1rem 1rem 15px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+  }
+
   &__content-wrapper {
     align-items: center;
     display: flex;
     overflow: hidden;
-    flex:1;
+    flex: 1;
   }
+
   &__content {
     padding-left: 0.5rem;
     display: flex;
     overflow: hidden;
     justify-content: space-between;
     flex-direction: column;
+
     &-header {
       flex: 1;
       overflow: hidden;
@@ -117,6 +202,7 @@ body {
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+
     &-sub_header {
       white-space: nowrap;
       overflow: hidden;
@@ -127,10 +213,12 @@ body {
     }
   }
 }
+
 //icon
 .icon {
   display: block;
   border-radius: 99999px;
+
   &--small {
     width: 35px;
     height: 35px;

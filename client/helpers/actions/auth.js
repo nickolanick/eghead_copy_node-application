@@ -42,6 +42,7 @@ export const login = async (store, post_data) => {
             },
             body: JSON.stringify(post_data)
         });
+
         const data = await response.json();
 
         store.dispatch(userLoginSuccessAction, data);
