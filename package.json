@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --watch",
+    "build": "webpack --watch",
     "populate": "node ./server/populate.js",
-    "build": "webpack",
-    "start": "webpack;node ./server/server.js"
+    "server": "node ./server/server.js",
+    "start": "concurrently --kill-others \"npm run build\" \"npm run server\""
   },
   "keywords": [],
   "author": "",

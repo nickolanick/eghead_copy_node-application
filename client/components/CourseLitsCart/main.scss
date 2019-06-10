@@ -3,10 +3,12 @@
   margin-bottom: 1rem;
   border-radius: 0.25rem;
   background-color: #fff;
+  vertical-align: top;
   &__heading{
     color: #fff;
   }
   &__wrapper {
+
     min-height: 100px;
     display: flex;
     justify-content: space-between;

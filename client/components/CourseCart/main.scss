@@ -1,5 +1,6 @@
 .course_cart {
   display: inline-block;
+  vertical-align: top;
   box-sizing: content-box;
   color: black;
   &--small{
@@ -34,6 +35,7 @@
   }
   &__wrapper {
     flex: 1;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
